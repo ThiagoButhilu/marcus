@@ -84,6 +84,8 @@
     display: inline-block; color: var(--bg);
     -webkit-text-stroke: 0.045em var(--stroke, var(--fg)); paint-order: stroke fill;
   }
+  /* no herói o miolo do "SEM" fica vazado e deixa o vídeo aparecer por dentro */
+  #h1 .hollow { color: transparent; -webkit-text-stroke-width: 0.024em; }
 
   /* ---------- por quê: cartões que viram ---------- */
   .flip { position: relative; perspective: 1200px; width: min(78vw, 23rem); height: min(30rem, 64svh); flex: none; scroll-snap-align: center; text-align: left; }

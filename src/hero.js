@@ -1,10 +1,13 @@
 import { animate, scroll, stagger } from 'motion'
 import { $, $$, clamp, lerp, smooth, reduced, profile } from './lib.js'
+import heroVideo from './assets/hero-subida.mp4'
+import heroPoster from './assets/hero-subida.jpg'
 
 /*
   Herói: o título "treino sem atalhos" estica de condensado para expandido enquanto a página sobe.
   Atrás dele, um perfil de altimetria se desenha (como o de uma subida de pedal) com o ciclista na ponta.
   No fim, um "atalho" em linha reta aparece e é riscado.
+  Ao fundo, o vídeo de uma subida anda quadro a quadro com a rolagem (com movimento reduzido ou economia de dados, fica só o pôster).
 */
 const W0 = 64 // largura inicial da fonte (condensada)
 const W1 = 125 // largura final (expandida)
@@ -17,6 +20,31 @@ export function initHero() {
   let fits = [], nat = [], boxW = 0, budget = 0, p = reduced ? 1 : 0
   let W = 0, H = 0, baseY = 0, topY = 0
   let el = {}
+
+  const video = $('#hero-video')
+  video.poster = heroPoster
+  const still = reduced || navigator.connection?.saveData
+  let want = 0, raf = 0
+  // um pedido de seek por vez: o próximo só sai quando o anterior terminou
+  const seek = () => {
+    raf = 0
+    if (!video.duration || video.seeking) return
+    if (Math.abs(video.currentTime - want) > 1 / 30) video.currentTime = want
+  }
+  const scrub = (v) => {
+    if (!video.duration) return
+    want = clamp(v / 0.9) * (video.duration - 0.05)
+    if (!raf) raf = requestAnimationFrame(seek)
+  }
+  if (still) video.style.opacity = '1'
+  else {
+    video.src = heroVideo
+    video.preload = 'auto'
+    video.addEventListener('loadeddata', () => { video.style.opacity = '1'; scrub(p) }, { once: true })
+    video.addEventListener('seeked', () => { if (!raf) raf = requestAnimationFrame(seek) })
+    // Safari só desenha o quadro depois de um play; o vídeo é mudo, então o play é permitido
+    video.addEventListener('loadedmetadata', () => { video.play().then(() => video.pause(), () => {}) }, { once: true })
+  }
 
   const rows = () => (DESKTOP.matches
     ? [['TREINO', 'SEM'], ['ATALHOS.']]
@@ -116,6 +144,7 @@ export function initHero() {
     copy.style.transform = `translateY(${((1 - r) * 18).toFixed(1)}px)`
     copy.inert = r < 0.25
     hint.style.opacity = (0.7 * (1 - clamp(v / 0.05))).toFixed(2)
+    scrub(v)
   }
 
   const layout = () => {
@@ -131,7 +160,7 @@ export function initHero() {
   }
 
   // fonte variável precisa estar pronta para medir a largura certa
-  document.fonts.load('800 100px Archivo', 'TREINO').then(() => document.fonts.ready).then(start, start)
+  document.fonts.load('900 100px Archivo', 'TREINO').then(() => document.fonts.ready).then(start, start)
 
   let lastW = innerWidth, lastH = innerHeight
   addEventListener('resize', () => {

@@ -22,6 +22,11 @@ As fotos dele pedalando ficam em `src/assets/foto-*.webp` e aparecem no baralho 
 Cores e fontes do mídia kit ficam no topo de `src/style.css` (`@theme`). Logo e posts do Instagram ficam em `src/assets/`:
 `marca.png` é o logo sem "Personal Trainer" (usado no topo como máscara, herda a cor da seção), `logo.png` / `logo-claro.png` são o logo completo
 e `post-*.webp` são os banners que aparecem no baralho da seção Instagram (`src/deck.js`).
+
+O fundo do herói é `src/assets/hero-subida.mp4` (com o pôster `hero-subida.jpg`): o vídeo anda quadro a quadro com a rolagem (`src/hero.js`).
+Fonte: "Cyclist Climbing Mauna Kea in Hawaii", de Tiago Espindola de Oliveira, na Pexels (pexels.com/video/31312083), licença Pexels (uso livre, sem crédito obrigatório).
+Ele foi cortado nos 10 primeiros segundos, reduzido para 1280px, sem áudio, com duotone preto/petróleo e um keyframe a cada 3 quadros para a rolagem responder rápido.
+Com movimento reduzido ou economia de dados ativada, fica só o pôster.
 A fonte de corpo é Glacial Indifference; como ela não está no Google Fonts, o site usa Jost quando ela não está instalada.
 
 ## GitHub Pages
