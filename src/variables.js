@@ -18,7 +18,7 @@ export function initVariables() {
         <div class="fader-fill"></div>
         <output class="fader-thumb"></output>
       </div>
-      <span class="display text-[clamp(0.8rem,3.4vw,1.9rem)]">${v.name}</span>
+      <span class="sub text-[clamp(0.8rem,2.4vw,1.5rem)]">${v.name}</span>
     </div>`).join('')
 
   const chart = $('#week-chart')
@@ -43,7 +43,7 @@ export function initVariables() {
       b.toggleAttribute('data-rest', !train)
       b.style.transform = `scaleY(${train ? session.toFixed(3) : 0.06})`
     })
-    chart.style.setProperty('--bar', key === 'over' ? '#ff5a36' : key === 'ok' ? '#0e1011' : 'rgb(14 16 17 / 0.42)')
+    chart.style.setProperty('--bar', key === 'over' ? '#457d93' : key === 'ok' ? '#000000' : 'rgb(0 0 0 / 0.42)')
 
     $('#m-stim').style.transform = `scaleX(${Math.max(stim, 0.03).toFixed(3)})`
     $('#m-rec').style.transform = `scaleX(${Math.max(rec, 0.03).toFixed(3)})`

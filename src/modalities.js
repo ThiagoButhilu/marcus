@@ -2,32 +2,31 @@ import { scroll } from 'motion'
 import { $, $$, clamp } from './lib.js'
 import { MODS } from './data.js'
 
-/* Ilustrações de cada treino. Traço em currentColor, para herdar a cor do painel. */
+/* Ilustrações de cada pilar. Traço em currentColor, para herdar a cor do painel. */
 const ART = {
-  forca: `
+  hipertrofia: `
     <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><path d="M20 200H380"/></g>
     <g fill="currentColor">
       <rect x="62" y="110" width="26" height="180" rx="9"/><rect x="94" y="78" width="30" height="244" rx="10"/><rect x="130" y="124" width="20" height="152" rx="8"/>
       <rect x="250" y="124" width="20" height="152" rx="8"/><rect x="276" y="78" width="30" height="244" rx="10"/><rect x="312" y="110" width="26" height="180" rx="9"/>
     </g>
     <g fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity=".55"><path d="M40 346H360"/></g>`,
-  hiit: `
+  emagrecimento: `
     <g fill="currentColor">
       ${[70, 150, 70, 190, 70, 230, 70, 270, 70, 310].map((h, i) => `<rect class="hb" style="--k:${i}" x="${24 + i * 36}" y="${340 - h}" width="24" height="${h}" rx="${i % 2 ? 12 : 7}" opacity="${i % 2 ? 1 : 0.4}"/>`).join('')}
     </g>
     <g fill="none" stroke="currentColor" stroke-width="3" opacity=".5"><path d="M16 346H384"/></g>`,
-  endurance: `
-    <g fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="3 14" stroke-linecap="round" opacity=".6"><path d="M10 348H390"/></g>
-    <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="104" cy="264" r="74"/><circle cx="296" cy="264" r="74"/>
-      <path d="M104 264L158 160L248 160L296 264M158 160L196 264L248 160M196 264L104 264"/>
-      <path d="M248 160L236 132H268M140 150H178"/>
-      <circle cx="196" cy="264" r="10" fill="currentColor"/>
+  comportamental: `
+    <g fill="currentColor" stroke="currentColor" stroke-width="5">
+      ${['x.x.x..', 'xx.xx..', 'xxxxx.x', 'xxxxxxx'].flatMap((row, r) => [...row].map((c, d) => `<rect x="${37 + d * 48}" y="${92 + r * 58}" width="38" height="38" rx="11" fill-opacity="${c === 'x' ? 1 : 0}" stroke-opacity="${c === 'x' ? 0 : 0.5}"/>`)).join('')}
     </g>
-    <g fill="none" stroke="currentColor" stroke-width="2.5" opacity=".5">
-      <path d="M104 190V338M30 264H178M52 212L156 316M156 212L52 316"/>
-      <path d="M296 190V338M222 264H370M244 212L348 316M348 212L244 316"/>
-    </g>`,
+    <g fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity=".55"><path d="M40 346H360"/></g>`,
+  economico: `
+    <g fill="currentColor">
+      ${[2, 4, 7].flatMap((n, s) => Array.from({ length: n }, (_, k) => `<rect x="${44 + s * 116}" y="${306 - k * 30}" width="88" height="22" rx="11" opacity="${k % 2 ? 0.55 : 1}"/>`)).join('')}
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M40 196L176 120L262 146L360 62M318 62H360V104"/></g>
+    <g fill="none" stroke="currentColor" stroke-width="3" opacity=".5"><path d="M16 346H384"/></g>`,
   saude: `
     <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 220H110L140 140L190 300L228 180L252 220H390"/></g>
     <g fill="currentColor" opacity=".9"><path d="M300 62a52 52 0 1 0 42 84a42 42 0 0 1-42-84Z"/></g>
@@ -35,7 +34,7 @@ const ART = {
 }
 
 /*
-  Quatro painéis lado a lado. A rolagem vertical da seção empurra a trilha para o lado:
+  Um painel por pilar, lado a lado. A rolagem vertical da seção empurra a trilha para o lado:
   a seção tem n * 100svh de altura e o palco fica preso no topo.
 */
 export function initModalities() {
@@ -52,12 +51,12 @@ export function initModalities() {
           <svg viewBox="0 0 400 400" class="h-full max-h-[26rem] w-full md:max-h-[34rem]" aria-hidden="true">${ART[m.key]}</svg>
         </div>
         <div class="panel-copy">
-          <h3 class="display text-[clamp(3rem,8.4vw,7.6rem)]">${m.title}</h3>
+          <h3 class="display text-[clamp(2.6rem,5.8vw,7.6rem)]">${m.title}</h3>
           <p class="mt-3 text-[1.25rem] font-bold leading-tight md:text-[1.6rem]">${m.line}</p>
           <p class="mt-3 hidden max-w-[30rem] text-[1.05rem] leading-relaxed opacity-85 sm:block">${m.text}</p>
           <div class="mt-5 flex flex-wrap items-center gap-2">
             ${m.tags.map((t) => `<span class="tag max-sm:hidden">${t}</span>`).join('')}
-            <a href="#contato" data-prefill="Vi o treino de ${m.title} no site e quero saber como funciona para o meu caso." class="btn" style="background:${m.fg};color:${m.bg}">Quero esse <i data-arr></i></a>
+            <a href="#contato" data-prefill="Vi o pilar ${m.title} no site e quero saber como funciona para o meu caso." class="btn" style="background:${m.fg};color:${m.bg}">Quero esse <i data-arr></i></a>
           </div>
         </div>
       </div>

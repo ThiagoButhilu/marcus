@@ -20,7 +20,7 @@ export function initNav() {
     if (t && t !== tone) {
       tone = t
       nav.dataset.tone = t
-      meta.content = t === 'dark' ? '#0e1011' : '#eef0ef'
+      meta.content = t === 'dark' ? '#000000' : '#faf7f0'
     }
   }
 

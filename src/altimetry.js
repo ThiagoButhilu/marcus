@@ -4,7 +4,7 @@ import { $, clamp, frame, profile } from './lib.js'
   Barra de altimetria: a subida do herói vira o mapa da página.
   O ponto mostra onde você está; toque num marco para ir até a seção ou arraste para percorrer a página.
 */
-const STOPS = [['#top', 'Início'], ['#mitos', 'Mitos'], ['#variaveis', 'Variáveis'], ['#treinos', 'Treinos'], ['#metodo', 'Método'], ['#marcus', 'Marcus'], ['#contato', 'Avaliação']]
+const STOPS = [['#top', 'Início'], ['#marcus', 'Marcus'], ['#mitos', 'Por quê'], ['#variaveis', 'Variáveis'], ['#treinos', 'Pilares'], ['#metodo', 'Como'], ['#contato', 'Avaliação']]
 const PAD = 22
 
 export function initAltimetry() {
@@ -35,7 +35,7 @@ export function initAltimetry() {
       <path d="${d}" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="2.5" stroke-linecap="round"/>
       <path id="alt-line" d="${d}" pathLength="1" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1" stroke-dashoffset="1"/>
       ${dots}
-      <g id="alt-rider"><circle r="7.5" fill="#ff5a36" stroke="#0e1011" stroke-width="3"/></g>`
+      <g id="alt-rider"><circle r="7.5" fill="#98b7ba" stroke="#000000" stroke-width="3"/></g>`
     line = $('#alt-line', svg); rider = $('#alt-rider', svg)
   }
 

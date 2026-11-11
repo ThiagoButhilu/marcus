@@ -31,7 +31,7 @@ export function initFaq() {
       typing.innerHTML = a
       log.scrollTo({ top: log.scrollHeight, behavior: reduced ? 'auto' : 'smooth' })
       busy = false
-      if (!asks.children.length) asks.innerHTML = '<a class="btn btn-coral" href="#contato">Pedir minha avaliação</a>'
+      if (!asks.children.length) asks.innerHTML = '<a class="btn btn-hot" href="#contato">Pedir minha avaliação</a>'
     }, reduced ? 0 : 900)
   })
 }

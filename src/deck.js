@@ -1,35 +1,37 @@
 import { $, $$ } from './lib.js'
 import { SITE } from './data.js'
+import postSaude from './assets/post-saude-desculpas.webp'
+import postEnergia from './assets/post-energia.webp'
+import postHabitos from './assets/post-habitos.webp'
+import logoClaro from './assets/logo-claro.png'
+import fotoPedal from './assets/foto-pedal.webp'
+import fotoSubida from './assets/foto-subida.webp'
 
 /*
-  Baralho: os cinco assuntos recentes do perfil, refeitos como capas tipográficas (não são as fotos dele).
+  Baralho: posts do perfil (os banners do mídia kit) intercalados com fotos do Marcus.
   Arraste o cartão de cima para o lado e ele vai para o fim do baralho.
-  Para usar as imagens reais, troque o conteúdo de cada cartão por um <img>.
+  Para trocar um post, coloque a imagem 4:5 em src/assets e importe aqui.
 */
+const post = (src, alt) => `<img src="${src}" alt="${alt}" class="size-full object-cover" draggable="false" />`
+
 const TILES = [
-  `<div class="flex h-full flex-col justify-between bg-tinta p-[7cqw] text-gelo">
-     <p class="text-[5.4cqw] font-semibold opacity-80">Será que você</p>
-     <p class="display text-[30cqw]">Treina?</p>
-     <p class="text-[5.2cqw] opacity-75">Conheça as variáveis do seu treino.</p>
+  post(postSaude, 'Post do Instagram: mais saúde, menos desculpas. Você tem dado a devida atenção à sua saúde?'),
+  `<div class="relative h-full bg-tinta text-gelo">
+     <img src="${fotoPedal}" alt="Marcus Thomaz pedalando numa estrada" class="absolute inset-0 size-full object-cover" draggable="false" />
+     <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-tinta/85 via-tinta/30 to-transparent p-[7cqw]">
+       <p class="sub text-[5.6cqw] opacity-85">Será que você</p>
+       <p class="display text-[18cqw]">Treina?</p>
+       <p class="mt-[2cqw] text-[5.2cqw] opacity-85">Conheça as variáveis do seu treino.</p>
+     </div>
    </div>`,
-  `<div class="flex h-full flex-col justify-between bg-coral p-[7cqw] text-tinta">
-     <p class="display text-[46cqw]">HIIT</p>
-     <p class="text-[6cqw] font-bold leading-tight">High-intensity interval training: da teoria à prática.</p>
-   </div>`,
-  `<div class="flex h-full flex-col justify-between bg-gelo p-[7cqw] text-tinta">
-     <div class="flex justify-between text-[4.6cqw] font-semibold"><span>Marcus Thomaz</span><span class="tabular-nums">01 / 07</span></div>
-     <p class="display text-[21cqw]">Treino sem atalhos</p>
-   </div>`,
-  `<div class="relative flex h-full flex-col justify-between overflow-hidden bg-mata p-[7cqw] text-gelo">
-     <svg viewBox="0 0 400 260" class="absolute inset-x-0 top-[6cqw] w-full" fill="none" stroke="#ffb23e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-       <circle cx="104" cy="170" r="64"/><circle cx="296" cy="170" r="64"/><path d="M104 170L156 80L244 80L296 170M156 80L196 170L244 80M196 170H104M244 80L234 56H262"/>
-     </svg>
-     <span></span>
-     <p class="display text-[16cqw]">Pedal também é treino</p>
-   </div>`,
-  `<div class="flex h-full flex-col justify-between bg-white p-[7cqw] text-tinta">
-     <span class="display text-[16cqw] text-coral">MT</span>
-     <p class="display text-[19cqw]">Disciplina e saúde.</p>
+  post(postEnergia, 'Post do Instagram: energia, disposição e saúde. É isso que você merece todos os dias.'),
+  post(postHabitos, 'Post do Instagram: seu corpo é o reflexo dos seus hábitos. O que ele está dizendo sobre você hoje?'),
+  `<div class="relative h-full bg-petroleo text-gelo">
+     <img src="${fotoSubida}" alt="Marcus Thomaz subindo uma ladeira de bicicleta" class="absolute inset-0 size-full object-cover" draggable="false" />
+     <div class="absolute inset-0 flex flex-col gap-[6cqw] bg-gradient-to-b from-petroleo/90 via-petroleo/45 to-transparent p-[7cqw]">
+       <img src="${logoClaro}" alt="Marcus Thomaz, personal trainer" class="w-[48%]" draggable="false" />
+       <p class="display text-[11.5cqw]">Compromisso com o seu resultado.</p>
+     </div>
    </div>`,
 ]
 
@@ -45,6 +47,7 @@ export function initDeck() {
 
   const place = (el, d) => {
     el.style.zIndex = n - d
+    el.toggleAttribute('data-top', d === 0)
     el.style.opacity = d > 3 ? 0 : 1
     el.style.transform = `translate(${d * 13}px, ${d * 11}px) scale(${1 - d * 0.045}) rotate(${d ? (d % 2 ? 1 : -1) * d * 1.1 : 0}deg)`
   }

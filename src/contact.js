@@ -55,7 +55,7 @@ export function initContact() {
       }).join('')}</ol>
       <p class="mt-3 text-[0.95rem] opacity-70">Sugestão inicial. O plano de verdade sai da avaliação.</p>
       <div class="mt-6 flex flex-wrap items-center gap-4">
-        <button id="wiz-send" type="button" class="btn btn-coral">Enviar no WhatsApp</button>
+        <button id="wiz-send" type="button" class="btn btn-hot">Enviar no WhatsApp</button>
         <button id="wiz-redo" type="button" class="font-semibold underline underline-offset-4">Refazer</button>
       </div>
       <p id="form-status" class="mt-3 min-h-6 text-[0.95rem] font-semibold" aria-live="polite"></p>`,

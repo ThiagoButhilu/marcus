@@ -14,8 +14,15 @@ npm run build    # gera a pasta dist
 Tudo fica em `src/data.js`: WhatsApp, Instagram, textos dos treinos, etapas, perguntas e sugestões de semana.
 Os textos dos serviços são rascunhos baseados na bio do perfil; confirme com o Marcus antes de publicar.
 
-Para usar a foto dele, coloque o arquivo em `public/` (por exemplo `public/marcus.jpg`) e escreva `photo: 'marcus.jpg'` em `SITE`.
-A foto substitui o "MT" no centro da roda de bicicleta.
+A foto do Marcus no centro da roda de bicicleta é `public/marcus.webp` (`photo: 'marcus.webp'` em `SITE`). Com `photo: ''` volta o logo MT.
+As fotos dele pedalando ficam em `src/assets/foto-*.webp` e aparecem no baralho da seção Instagram.
+
+## Identidade visual
+
+Cores e fontes do mídia kit ficam no topo de `src/style.css` (`@theme`). Logo e posts do Instagram ficam em `src/assets/`:
+`marca.png` é o logo sem "Personal Trainer" (usado no topo como máscara, herda a cor da seção), `logo.png` / `logo-claro.png` são o logo completo
+e `post-*.webp` são os banners que aparecem no baralho da seção Instagram (`src/deck.js`).
+A fonte de corpo é Glacial Indifference; como ela não está no Google Fonts, o site usa Jost quando ela não está instalada.
 
 ## GitHub Pages
 

@@ -1,7 +1,7 @@
 /*
   Tudo o que muda de conteúdo mora aqui.
   Fonte: perfil @personal.marcusthomaz (bio, WhatsApp e assuntos dos posts).
-  Os textos de serviço são rascunhos baseados na bio: confirme com o Marcus antes de publicar.
+  Serviço (pilares), motivos (por quê) e processo (como) seguem o briefing do Marcus de 10/11/2026.
 */
 export const SITE = {
   name: 'Marcus Thomaz',
@@ -9,17 +9,18 @@ export const SITE = {
   phone: '(27) 99912-2547',
   instagram: 'personal.marcusthomaz',
   // foto do Marcus: coloque o arquivo em /public (ex.: public/marcus.jpg) e escreva 'marcus.jpg'
-  photo: '',
+  photo: 'marcus.webp',
 }
 
 export const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
 
-export const MYTHS = [
-  { myth: 'Treinar até não aguentar mais.', truth: 'Falha em todo treino cobra caro. A intensidade se dosa, e quem manda é o plano.' },
-  { myth: 'Suar muito é treinar bem.', truth: 'Suor é o corpo se resfriando, não uma métrica. O que conta é a carga somada na semana.' },
-  { myth: 'O treino da internet serve para mim.', truth: 'Foi montado para outra pessoa, com outra rotina e outro histórico. O seu começa na avaliação.' },
-  { myth: 'Descansar é perder tempo.', truth: 'É no descanso que o corpo se adapta. Sem ele, a conta do treino não fecha.' },
-  { myth: 'Musculação e cardio brigam.', truth: 'Bem organizados, um ajuda o outro. Pergunte a quem pedala e levanta peso.' },
+/* "por quê": na frente, o que a pessoa vive hoje; atrás, o que o condicionamento muda (um por pilar) */
+export const REASONS = [
+  { now: 'Perder o fôlego no primeiro lance de escada.', gain: 'Condicionamento é o que faz o dia pesar menos. Fôlego, disposição e sono melhor são saúde que você sente.' },
+  { now: 'Começar na segunda e parar na quinta.', gain: 'Constância se constrói. Com rotina organizada e acompanhamento, o hábito fica e a força de vontade deixa de ser o plano.' },
+  { now: 'Pagar academia que você não usa.', gain: 'Treino bem prescrito não desperdiça tempo nem dinheiro. E cuidar do corpo hoje é prevenção para amanhã.' },
+  { now: 'Fazer dieta e ver o peso voltar.', gain: 'Emagrecer treinando preserva músculo. O resultado dura porque o corpo muda junto, não só o prato.' },
+  { now: 'Treinar há meses e o corpo não mudar.', gain: 'Hipertrofia pede carga que progride, volume certo e descanso. Sem plano, é só repetição.' },
 ]
 
 /* faders da seção "variáveis" */
@@ -37,35 +38,43 @@ export const VERDICTS = {
   ok: { title: 'Zona de progresso.', text: 'Estímulo e recuperação conversando. É esse equilíbrio que a avaliação procura.' },
 }
 
-/* tone: cor do texto do topo sobre o painel ('light' = texto escuro) */
+/* "o quê": os cinco pilares do serviço. tone: cor do texto do topo sobre o painel ('light' = texto escuro) */
 export const MODS = [
   {
-    key: 'forca', title: 'Musculação', line: 'Força com técnica, carga que progride.',
+    key: 'saude', title: 'Saúde e bem-estar', line: 'Para viver mais e melhor.',
+    text: 'Treino, sono, movimento no dia a dia e respeito ao seu histórico. O corpo cuidado para durar, não só para a próxima foto.',
+    tags: ['Longevidade', 'Prevenção', 'Disposição'], bg: '#98b7ba', fg: '#000000', tone: 'light',
+  },
+  {
+    key: 'comportamental', title: 'Comportamental', line: 'Disciplina que vira hábito.',
+    text: 'O resultado vem do que se repete. Rotina organizada, metas por etapa e acompanhamento próximo para você não depender de motivação.',
+    tags: ['Hábito', 'Disciplina', 'Constância'], bg: '#274c5f', fg: '#faf7f0', tone: 'dark',
+  },
+  {
+    key: 'economico', title: 'Econômico', line: 'Resultado sem desperdício.',
+    text: 'Cada sessão tem propósito: nada de pagar por treino aleatório ou perder tempo na academia. O plano é feito para o seu local, o seu equipamento e o formato que cabe na sua rotina.',
+    tags: ['Custo-benefício', 'Tempo bem usado', 'Presencial ou online'], bg: '#bcc3c4', fg: '#000000', tone: 'light',
+  },
+  {
+    key: 'emagrecimento', title: 'Emagrecimento', line: 'Perder gordura, manter músculo.',
+    text: 'Força e condicionamento, HIIT incluso, dosados para o seu nível e somados a uma rotina possível. Emagrecer de um jeito que o peso não volte.',
+    tags: ['Perda de gordura', 'Condicionamento', 'HIIT'], bg: '#000000', fg: '#faf7f0', tone: 'dark',
+  },
+  {
+    key: 'hipertrofia', title: 'Hipertrofia', line: 'Carga que progride, com técnica.',
     text: 'Treino de força montado para o seu corpo e a sua semana. Execução corrigida, cargas registradas e progressão planejada, sem treino aleatório.',
-    tags: ['Hipertrofia', 'Força', 'Técnica'], bg: '#ff5a36', fg: '#0e1011', tone: 'light',
-  },
-  {
-    key: 'hiit', title: 'HIIT', line: 'Da teoria à prática.',
-    text: 'Treino intervalado de alta intensidade, dosado para render no tempo que você tem. Menos minutos no relógio, com intensidade que faz sentido para o seu nível.',
-    tags: ['Condicionamento', 'Treino curto', 'Intervalado'], bg: '#0e1011', fg: '#eef0ef', tone: 'dark',
-  },
-  {
-    key: 'endurance', title: 'Ciclismo e endurance', line: 'Pedal e corrida com plano.',
-    text: 'Musculação e condicionamento organizados em volta do seu treino de rua, para você render mais sem que um atrapalhe o outro.',
-    tags: ['Base aeróbia', 'Força para atletas', 'Prova'], bg: '#ffb23e', fg: '#0e1011', tone: 'light',
-  },
-  {
-    key: 'saude', title: 'Saúde e rotina', line: 'Para viver mais e melhor.',
-    text: 'Treino, sono, movimento no dia a dia e constância. Eu organizo a rotina que sustenta o resultado depois da primeira semana.',
-    tags: ['Rotina', 'Longevidade', 'Constância'], bg: '#17382c', fg: '#eef0ef', tone: 'dark',
+    tags: ['Musculação', 'Força', 'Técnica'], bg: '#3a687b', fg: '#faf7f0', tone: 'dark',
   },
 ]
 
+/* "como": o processo, do primeiro contato à evolução do treino */
 export const STEPS = [
-  { name: 'Avaliação', text: 'Conversa sobre objetivo, histórico, lesões e rotina. É daqui que sai o ponto de partida.' },
-  { name: 'Prescrição', text: 'O treino montado para a sua semana real: dias disponíveis, tempo, local e equipamento.' },
-  { name: 'Acompanhamento', text: 'Presencial ou online, com a execução corrigida e as cargas registradas.' },
-  { name: 'Ajuste', text: 'A cada ciclo, volume, intensidade e descanso são reajustados. O treino muda com você.' },
+  { name: 'Contratação', text: 'Você escolhe o formato, presencial ou online, e confirma o plano. A partir daqui o compromisso é com o seu resultado.' },
+  { name: 'Anamnese', text: 'Um formulário interativo sobre objetivo, histórico, lesões e rotina. Enquanto responde, você já aprende os conceitos do seu treino.' },
+  { name: 'Videochamada', text: 'Revisamos juntos a sua anamnese, com apontamentos e recomendações antes do primeiro treino.' },
+  { name: 'Início', text: 'O treino montado para a sua semana real: dias disponíveis, tempo, local e equipamento. A rotina começa.' },
+  { name: 'Feedback', text: 'Você conta como foi: cargas, cansaço, dores e o que encaixou na rotina. Nada é ajustado no palpite.' },
+  { name: 'Ajuste', text: 'Com o seu feedback, volume, intensidade e descanso são reajustados a cada ciclo. O treino evolui com você.' },
 ]
 
 export const FORMATS = {
@@ -84,17 +93,19 @@ export const FAQ = [
   ['Presencial ou online, qual escolher?', 'Depende da sua rotina e de quanta correção ao vivo você precisa. Na avaliação a gente decide junto.'],
   ['Serve para quem pedala ou corre?', 'Serve. A musculação e o condicionamento entram em volta do seu treino de rua, sem um atrapalhar o outro.'],
   ['E se eu tiver lesão ou problema de saúde?', 'Conte na avaliação. O treino respeita o seu histórico e, quando fizer sentido, é alinhado com o seu médico.'],
+  ['O que acontece depois que eu contrato?', 'Você preenche a anamnese, a gente revisa tudo numa videochamada e o treino começa. Depois, o seu feedback ajusta cada ciclo.'],
   ['Quanto custa?', 'Depende do formato e da frequência. Peça a avaliação e receba as opções pelo WhatsApp.'],
 ]
 
-export const GOALS = ['Emagrecer', 'Ganhar massa', 'Performance no pedal ou na corrida', 'Saúde e rotina', 'Voltar a treinar']
+export const GOALS = ['Emagrecer', 'Hipertrofia', 'Saúde e bem-estar', 'Criar constância', 'Performance no pedal ou na corrida', 'Voltar a treinar']
 
 /* sessões sugeridas por objetivo, na ordem em que entram nos dias escolhidos */
 export const PLAN = {
   'Emagrecer': ['Força', 'HIIT', 'Força', 'Cardio leve', 'Força', 'Passeio ativo', 'Mobilidade'],
-  'Ganhar massa': ['Força A', 'Força B', 'Força C', 'Força D', 'Força E', 'Cardio leve', 'Mobilidade'],
+  'Hipertrofia': ['Força A', 'Força B', 'Força C', 'Força D', 'Força E', 'Cardio leve', 'Mobilidade'],
   'Performance no pedal ou na corrida': ['Força', 'Intervalado', 'Rodagem leve', 'Força', 'Treino longo', 'Mobilidade', 'Regenerativo'],
-  'Saúde e rotina': ['Força', 'Caminhada', 'Força', 'Mobilidade', 'Força', 'Passeio ativo', 'Alongar'],
+  'Saúde e bem-estar': ['Força', 'Caminhada', 'Força', 'Mobilidade', 'Força', 'Passeio ativo', 'Alongar'],
+  'Criar constância': ['Força', 'Caminhada', 'Força', 'Mobilidade', 'Força leve', 'Passeio ativo', 'Alongar'],
   'Voltar a treinar': ['Adaptação', 'Caminhada', 'Adaptação', 'Mobilidade', 'Força leve', 'Passeio ativo', 'Alongar'],
 }
 
