@@ -1,6 +1,7 @@
 import { animate, scroll } from 'motion'
 import { $, reduced } from './lib.js'
 import { SITE, FORMATS } from './data.js'
+import { UI } from './i18n.js'
 import marca from './assets/marca.png'
 
 /** Roda de bicicleta que gira com o scroll, com o logo (ou a foto do Marcus, se houver) no centro, e o seletor presencial/online. */
@@ -16,7 +17,7 @@ export function initMarcus() {
        <image href="${import.meta.env.BASE_URL}${SITE.photo}" x="82" y="82" width="236" height="236" preserveAspectRatio="xMidYMid slice" clip-path="url(#face)"/>`
     : `<circle cx="200" cy="200" r="62" fill="#98b7ba"/>
        <image href="${marca}" x="152" y="176.4" width="96" height="47.2"/>`
-  wheel.setAttribute('aria-label', SITE.photo ? 'Foto do Marcus Thomaz no centro de uma roda de bicicleta' : 'Roda de bicicleta com o logo MT no centro')
+  wheel.setAttribute('aria-label', SITE.photo ? UI.wheel.photo : UI.wheel.logo)
   wheel.innerHTML = `
     <g id="spin" style="transform-origin:200px 200px">
       <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="16" stroke-dasharray="3 14" opacity=".35"/>

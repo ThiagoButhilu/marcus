@@ -1,5 +1,6 @@
 import { $, $$, clamp } from './lib.js'
 import { VARS, DAYS, VERDICTS } from './data.js'
+import { UI } from './i18n.js'
 
 /*
   Mesa de variáveis: quatro barras de arrastar.
@@ -9,7 +10,7 @@ import { VARS, DAYS, VERDICTS } from './data.js'
 export function initVariables() {
   const val = Object.fromEntries(VARS.map((v) => [v.id, v.val]))
   const host = $('#faders'), hint = $('#fader-hint')
-  hint.textContent = 'Arraste uma barra para mudar a dose.'
+  hint.textContent = UI.vars.hint
 
   host.innerHTML = VARS.map((v) => `
     <div class="fader" data-id="${v.id}" role="slider" tabindex="0" aria-orientation="vertical"
@@ -52,7 +53,7 @@ export function initVariables() {
     $('#verdict-title').textContent = VERDICTS[key].title
     $('#verdict-text').textContent = VERDICTS[key].text
 
-    const prefill = `Brinquei com as variáveis no site: volume ${vol}/10, intensidade ${int}/10, ${freq} ${freq === 1 ? 'dia' : 'dias'} por semana e descanso ${rest}/10. Quero ajustar isso de verdade.`
+    const prefill = UI.vars.prefill({ vol, int, freq, rest })
     $$('[data-var-cta]').forEach((a) => (a.dataset.prefill = prefill))
 
     VARS.forEach((v) => {

@@ -1,5 +1,6 @@
 import { $, $$ } from './lib.js'
 import { SITE } from './data.js'
+import { UI } from './i18n.js'
 import postSaude from './assets/post-saude-desculpas.webp'
 import postEnergia from './assets/post-energia.webp'
 import postHabitos from './assets/post-habitos.webp'
@@ -15,22 +16,22 @@ import fotoSubida from './assets/foto-subida.webp'
 const post = (src, alt) => `<img src="${src}" alt="${alt}" class="size-full object-cover" draggable="false" />`
 
 const TILES = [
-  post(postSaude, 'Post do Instagram: mais saúde, menos desculpas. Você tem dado a devida atenção à sua saúde?'),
+  post(postSaude, UI.deck.postSaude),
   `<div class="relative h-full bg-tinta text-gelo">
-     <img src="${fotoPedal}" alt="Marcus Thomaz pedalando numa estrada" class="absolute inset-0 size-full object-cover" draggable="false" />
+     <img src="${fotoPedal}" alt="${UI.deck.pedalAlt}" class="absolute inset-0 size-full object-cover" draggable="false" />
      <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-tinta/85 via-tinta/30 to-transparent p-[7cqw]">
-       <p class="sub text-[5.6cqw] opacity-85">Será que você</p>
-       <p class="display text-[18cqw]">Treina?</p>
-       <p class="mt-[2cqw] text-[5.2cqw] opacity-85">Conheça as variáveis do seu treino.</p>
+       <p class="sub text-[5.6cqw] opacity-85">${UI.deck.askPre}</p>
+       <p class="display text-[18cqw]">${UI.deck.ask}</p>
+       <p class="mt-[2cqw] text-[5.2cqw] opacity-85">${UI.deck.askSub}</p>
      </div>
    </div>`,
-  post(postEnergia, 'Post do Instagram: energia, disposição e saúde. É isso que você merece todos os dias.'),
-  post(postHabitos, 'Post do Instagram: seu corpo é o reflexo dos seus hábitos. O que ele está dizendo sobre você hoje?'),
+  post(postEnergia, UI.deck.postEnergia),
+  post(postHabitos, UI.deck.postHabitos),
   `<div class="relative h-full bg-petroleo text-gelo">
-     <img src="${fotoSubida}" alt="Marcus Thomaz subindo uma ladeira de bicicleta" class="absolute inset-0 size-full object-cover" draggable="false" />
+     <img src="${fotoSubida}" alt="${UI.deck.subidaAlt}" class="absolute inset-0 size-full object-cover" draggable="false" />
      <div class="absolute inset-0 flex flex-col gap-[6cqw] bg-gradient-to-b from-petroleo/90 via-petroleo/45 to-transparent p-[7cqw]">
-       <img src="${logoClaro}" alt="Marcus Thomaz, personal trainer" class="w-[48%]" draggable="false" />
-       <p class="display text-[11.5cqw]">Compromisso com o seu resultado.</p>
+       <img src="${logoClaro}" alt="${UI.deck.logoAlt}" class="w-[48%]" draggable="false" />
+       <p class="display text-[11.5cqw]">${UI.deck.promise}</p>
      </div>
    </div>`,
 ]

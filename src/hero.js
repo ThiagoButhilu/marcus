@@ -1,5 +1,6 @@
 import { animate, scroll, stagger } from 'motion'
 import { $, $$, clamp, lerp, smooth, reduced, profile } from './lib.js'
+import { UI } from './i18n.js'
 import heroVideo from './assets/hero-subida.mp4'
 import heroPoster from './assets/hero-subida.jpg'
 
@@ -46,13 +47,11 @@ export function initHero() {
     video.addEventListener('loadedmetadata', () => { video.play().then(() => video.pause(), () => {}) }, { once: true })
   }
 
-  const rows = () => (DESKTOP.matches
-    ? [['TREINO', 'SEM'], ['ATALHOS.']]
-    : [['TREINO'], ['SEM'], ['ATALHOS.']])
+  const rows = () => (DESKTOP.matches ? UI.hero.desktop : UI.hero.mobile)
 
   const buildTitle = () => {
     h1.innerHTML = rows().map((words) => {
-      const inner = words.map((w) => (w === 'SEM' ? `<span class="hollow">${w}</span>` : w)).join('&nbsp;')
+      const inner = words.map((w) => (w === UI.hero.hollow ? `<span class="hollow">${w}</span>` : w)).join('&nbsp;')
       return `<span class="fit line hero-title" aria-hidden="true"><span class="line-in">${inner}</span></span>`
     }).join('')
     fits = $$('.fit', h1)
@@ -99,7 +98,7 @@ export function initHero() {
         <circle r="17" fill="var(--bg)"/>
         <path d="M-9 -9L9 9M9 -9L-9 9" stroke="var(--hot)" stroke-width="4.5" stroke-linecap="round"/>
       </g>
-      <text id="sc-t" opacity="0" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor" stroke="var(--bg)" stroke-width="6" paint-order="stroke" x="${W / 2}" y="${((Y(0) + Y(1)) / 2 - 28).toFixed(1)}">atalho</text>
+      <text id="sc-t" opacity="0" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor" stroke="var(--bg)" stroke-width="6" paint-order="stroke" x="${W / 2}" y="${((Y(0) + Y(1)) / 2 - 28).toFixed(1)}">${UI.hero.shortcut}</text>
       <g id="rider"><circle r="17" fill="var(--hot)" fill-opacity=".25"/><circle r="7.5" fill="var(--hot)" stroke="var(--bg)" stroke-width="3.5"/></g>`
     el = { clipA: $('#clip-a-r', svg), clipS: $('#clip-s-r', svg), line: $('#line', svg), rider: $('#rider', svg), x: $('#x', svg), t: $('#sc-t', svg) }
     el.Y = Y
@@ -128,7 +127,7 @@ export function initHero() {
       el.rider.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`)
       const tw = tag.offsetWidth
       tag.style.transform = `translate(${clamp(x - tw / 2, 0, W - tw).toFixed(1)}px, ${(y - 52).toFixed(1)}px)`
-      tag.textContent = `Semana ${Math.round(1 + 11 * q)}`
+      tag.textContent = UI.hero.week(Math.round(1 + 11 * q))
 
       const s = clamp((v - 0.8) / 0.2)
       el.clipS.setAttribute('width', (W * clamp(s / 0.5)).toFixed(1))
@@ -136,7 +135,7 @@ export function initHero() {
       el.x.setAttribute('opacity', mark.toFixed(2))
       el.x.setAttribute('transform', `translate(${W / 2} ${((el.Y(0) + el.Y(1)) / 2).toFixed(1)}) scale(${(0.6 + 0.4 * mark).toFixed(2)})`)
       el.t.setAttribute('opacity', clamp(s / 0.3).toFixed(2))
-      el.t.textContent = s > 0.6 ? 'atalho: não existe' : 'atalho'
+      el.t.textContent = s > 0.6 ? UI.hero.noShortcut : UI.hero.shortcut
     }
 
     const r = smooth(clamp((v - 0.42) / 0.3))
@@ -160,7 +159,7 @@ export function initHero() {
   }
 
   // fonte variável precisa estar pronta para medir a largura certa
-  document.fonts.load('900 100px Archivo', 'TREINO').then(() => document.fonts.ready).then(start, start)
+  document.fonts.load('900 100px Archivo', UI.hero.desktop[0][0]).then(() => document.fonts.ready).then(start, start)
 
   let lastW = innerWidth, lastH = innerHeight
   addEventListener('resize', () => {

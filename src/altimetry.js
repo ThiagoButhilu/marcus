@@ -1,10 +1,11 @@
 import { $, clamp, frame, profile } from './lib.js'
+import { UI } from './i18n.js'
 
 /*
   Barra de altimetria: a subida do herói vira o mapa da página.
   O ponto mostra onde você está; toque num marco para ir até a seção ou arraste para percorrer a página.
 */
-const STOPS = [['#top', 'Início'], ['#marcus', 'Marcus'], ['#mitos', 'Por quê'], ['#variaveis', 'Variáveis'], ['#treinos', 'Pilares'], ['#metodo', 'Como'], ['#contato', 'Avaliação']]
+const STOPS = ['top', 'marcus', 'mitos', 'variaveis', 'treinos', 'metodo', 'contato'].map((id) => [`#${id}`, UI.stops[id]])
 const PAD = 22
 
 export function initAltimetry() {

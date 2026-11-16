@@ -1,5 +1,6 @@
 import { animate } from 'motion'
 import { $, clamp, reduced, frame } from './lib.js'
+import { UI } from './i18n.js'
 
 export function initNav() {
   const nav = $('#nav')
@@ -44,7 +45,7 @@ export function initNav() {
   function toggle(open) {
     menuOpen = open
     btn.setAttribute('aria-expanded', String(open))
-    label.textContent = open ? 'Fechar' : 'Menu'
+    label.textContent = open ? UI.menu.close : UI.menu.open
     menu.setAttribute('aria-hidden', String(!open))
     document.documentElement.style.overflow = open ? 'hidden' : ''
     if (open) {

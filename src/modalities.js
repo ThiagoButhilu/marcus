@@ -1,6 +1,7 @@
 import { scroll } from 'motion'
 import { $, $$, clamp } from './lib.js'
 import { MODS } from './data.js'
+import { UI } from './i18n.js'
 
 /* Ilustrações de cada pilar. Traço em currentColor, para herdar a cor do painel. */
 const ART = {
@@ -56,13 +57,13 @@ export function initModalities() {
           <p class="mt-3 hidden max-w-[30rem] text-[1.05rem] leading-relaxed opacity-85 sm:block">${m.text}</p>
           <div class="mt-5 flex flex-wrap items-center gap-2">
             ${m.tags.map((t) => `<span class="tag max-sm:hidden">${t}</span>`).join('')}
-            <a href="#contato" data-prefill="Vi o pilar ${m.title} no site e quero saber como funciona para o meu caso." class="btn" style="background:${m.fg};color:${m.bg}">Quero esse <i data-arr></i></a>
+            <a href="#contato" data-prefill="${UI.pillars.prefill(m.title)}" class="btn" style="background:${m.fg};color:${m.bg}">${UI.pillars.cta} <i data-arr></i></a>
           </div>
         </div>
       </div>
     </article>`).join('')
 
-  dots.innerHTML = MODS.map((m, i) => `<button type="button" class="dotnav" aria-label="Ir para ${m.title}" aria-current="false"></button>`).join('')
+  dots.innerHTML = MODS.map((m, i) => `<button type="button" class="dotnav" aria-label="${UI.pillars.goTo(m.title)}" aria-current="false"></button>`).join('')
   const panels = $$('.panel', track), arts = $$('.panel-art', track), copies = $$('.panel-copy', track), dotEls = $$('.dotnav', dots)
 
   dotEls.forEach((d, i) => d.addEventListener('click', () => scrollTo({ top: sec.offsetTop + i * innerHeight, behavior: 'smooth' })))

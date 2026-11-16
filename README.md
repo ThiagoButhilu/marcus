@@ -11,13 +11,21 @@ npm run build    # gera a pasta dist
 
 ## Onde mudar o conteúdo
 
-Tudo fica em `src/data.js`: WhatsApp, Instagram, textos dos treinos, etapas, perguntas e sugestões de semana.
-Os textos dos serviços são rascunhos baseados na bio do perfil; confirme com o Marcus antes de publicar.
+Os textos ficam em `src/content/`: `pt.js` (português, padrão) e `en.js` (inglês), com a mesma estrutura.
+`src/data.js` guarda o que não muda de idioma: WhatsApp, Instagram, cores dos pilares e números das barras.
+Os textos fixos do `index.html` estão em português; a versão em inglês deles fica no `STATIC` de `en.js`, com o texto em português como chave.
+Se mudar um texto no HTML, atualize a chave no `STATIC` também, senão ele aparece em português no site em inglês.
+
+## Idiomas
+
+O seletor PT | EN fica no topo. A escolha fica salva no navegador; `?lang=en` (ou `?lang=pt`) na URL força um idioma, bom para mandar o link.
+Sem escolha salva, quem usa o navegador em português vê português e os demais veem inglês.
+Trocar de idioma recarrega a página. Os posts do Instagram no baralho são imagens com texto em português; o texto alternativo deles avisa isso em inglês.
+
+## Identidade visual
 
 A foto do Marcus no centro da roda de bicicleta é `public/marcus.webp` (`photo: 'marcus.webp'` em `SITE`). Com `photo: ''` volta o logo MT.
 As fotos dele pedalando ficam em `src/assets/foto-*.webp` e aparecem no baralho da seção Instagram.
-
-## Identidade visual
 
 Cores e fontes do mídia kit ficam no topo de `src/style.css` (`@theme`). Logo e posts do Instagram ficam em `src/assets/`:
 `marca.png` é o logo sem "Personal Trainer" (usado no topo como máscara, herda a cor da seção), `logo.png` / `logo-claro.png` são o logo completo

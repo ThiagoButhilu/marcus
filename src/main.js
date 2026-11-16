@@ -1,5 +1,6 @@
 import './style.css'
 import { $$ } from './lib.js'
+import { initI18n } from './i18n.js'
 import { initHero } from './hero.js'
 import { initMyths } from './myths.js'
 import { initVariables } from './variables.js'
@@ -14,6 +15,8 @@ import { initAltimetry } from './altimetry.js'
 
 const ARROW = '<svg class="arr" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7"/></svg>'
 
+// textos fixos do HTML primeiro: as seções abaixo geram o resto já no idioma certo
+initI18n()
 initMyths()
 initVariables()
 initModalities()
