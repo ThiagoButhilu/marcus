@@ -65,12 +65,12 @@ export default {
   },
 
   STEPS: [
-    { name: 'Sign-up', text: 'You choose the format, in person or online, and confirm the plan. From here on, the commitment is to your results.' },
-    { name: 'Health form', text: 'An interactive form about your goal, history, injuries and routine. As you answer, you already learn the concepts behind your training.' },
-    { name: 'Video call', text: 'We review your form together, with notes and recommendations before your first workout.' },
-    { name: 'Kick-off', text: 'Your program built for your real week: available days, time, location and equipment. The routine begins.' },
-    { name: 'Feedback', text: 'You tell me how it went: loads, fatigue, soreness and what fit your routine. Nothing is adjusted by guesswork.' },
-    { name: 'Adjustment', text: 'Based on your feedback, volume, intensity and rest are readjusted every cycle. Your training evolves with you.' },
+    { name: 'Sign-up', text: 'You choose in person or online and confirm the plan.' },
+    { name: 'Health form', text: 'An interactive form about your goal, history and routine. You learn as you answer.' },
+    { name: 'Video call', text: 'We review your form together, with notes and recommendations.' },
+    { name: 'First workout', text: 'Your program, built for your real week. The routine begins.' },
+    { name: 'Feedback', text: 'You tell me how it went: loads, fatigue, soreness and routine.' },
+    { name: 'Adjustment', text: 'Your training is readjusted based on your feedback. Then the cycle starts again.' },
   ],
 
   FORMATS: {
@@ -130,6 +130,10 @@ export default {
       cta: 'I want this',
       goTo: (t) => `Go to ${t}`,
       prefill: (t) => `I saw the ${t} pillar on the website and want to know how it works for me.`,
+    },
+    method: {
+      phases: ['Before you start', 'Training', 'Every cycle'],
+      loop: 'Feedback and adjustment repeat every cycle: your training evolves with you.',
     },
     wheel: { photo: 'Photo of Marcus Thomaz in the center of a bicycle wheel', logo: 'Bicycle wheel with the MT logo in the center' },
     deck: {
@@ -225,7 +229,7 @@ export default {
     'Os cinco pilares do serviço': 'The five pillars of the service',
     'O serviço: cinco pilares': 'The service: five pillars',
     'Do papel ao suor': 'From paper to sweat',
-    'Seis etapas, nessa ordem. Nenhuma dá para pular: é assim que o resultado vira seu.': 'Six steps, in this order. None can be skipped: that is how the results become yours.',
+    'Seis passos. Os três primeiros acontecem uma vez; depois, o seu treino segue num ciclo de feedback e ajuste.': 'Six steps. The first three happen once; after that, your training runs on a cycle of feedback and adjustment.',
     'Treino no dia a dia': 'Training, day to day',
     'Saúde, hábitos e rotina: os assuntos que o Marcus publica, do jeito que ele publica. Arraste os cartões.':
       'Health, habits and routine: the topics Marcus posts about, the way he posts them. Drag the cards.',

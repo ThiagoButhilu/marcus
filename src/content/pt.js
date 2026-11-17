@@ -68,14 +68,14 @@ export default {
     },
   },
 
-  /* "como": o processo, do primeiro contato à evolução do treino */
+  /* "como": o processo em seis etapas; as fases e a volta do ciclo ficam em UI.method */
   STEPS: [
-    { name: 'Contratação', text: 'Você escolhe o formato, presencial ou online, e confirma o plano. A partir daqui o compromisso é com o seu resultado.' },
-    { name: 'Anamnese', text: 'Um formulário interativo sobre objetivo, histórico, lesões e rotina. Enquanto responde, você já aprende os conceitos do seu treino.' },
-    { name: 'Videochamada', text: 'Revisamos juntos a sua anamnese, com apontamentos e recomendações antes do primeiro treino.' },
-    { name: 'Início', text: 'O treino montado para a sua semana real: dias disponíveis, tempo, local e equipamento. A rotina começa.' },
-    { name: 'Feedback', text: 'Você conta como foi: cargas, cansaço, dores e o que encaixou na rotina. Nada é ajustado no palpite.' },
-    { name: 'Ajuste', text: 'Com o seu feedback, volume, intensidade e descanso são reajustados a cada ciclo. O treino evolui com você.' },
+    { name: 'Contratação', text: 'Você escolhe presencial ou online e confirma o plano.' },
+    { name: 'Anamnese', text: 'Um formulário interativo sobre objetivo, histórico e rotina. Você já aprende enquanto responde.' },
+    { name: 'Videochamada', text: 'Revisamos juntos a sua anamnese, com apontamentos e recomendações.' },
+    { name: 'Primeiro treino', text: 'O treino montado para a sua semana real. A rotina começa.' },
+    { name: 'Feedback', text: 'Você conta como foi: cargas, cansaço, dores e rotina.' },
+    { name: 'Ajuste', text: 'Com o seu feedback, o treino é reajustado. E o ciclo recomeça.' },
   ],
 
   FORMATS: {
@@ -137,6 +137,10 @@ export default {
       cta: 'Quero esse',
       goTo: (t) => `Ir para ${t}`,
       prefill: (t) => `Vi o pilar ${t} no site e quero saber como funciona para o meu caso.`,
+    },
+    method: {
+      phases: ['Antes de começar', 'Treino', 'A cada ciclo'],
+      loop: 'Feedback e ajuste se repetem a cada ciclo: o treino evolui com você.',
     },
     wheel: { photo: 'Foto do Marcus Thomaz no centro de uma roda de bicicleta', logo: 'Roda de bicicleta com o logo MT no centro' },
     deck: {
