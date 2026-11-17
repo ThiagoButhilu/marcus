@@ -33,26 +33,31 @@ export default {
 
   MODS: {
     saude: {
+      alt: 'Marcus Thomaz with his bike on a foggy road',
       title: 'Health and well-being', line: 'To live longer and better.',
       text: 'Training, sleep, everyday movement and respect for your history. A body cared for to last, not just for the next photo.',
       tags: ['Longevity', 'Prevention', 'Energy'],
     },
     comportamental: {
+      alt: 'Marcus Thomaz riding alone up a long road',
       title: 'Behavior', line: 'Discipline that becomes habit.',
       text: 'Results come from what you repeat. An organized routine, step-by-step goals and close follow-up so you do not depend on motivation.',
       tags: ['Habit', 'Discipline', 'Consistency'],
     },
     economico: {
+      alt: 'Marcus Thomaz cycling on a country road',
       title: 'Cost-effective', line: 'Results without waste.',
       text: 'Every session has a purpose: no paying for random workouts or wasting time at the gym. The plan fits your location, your equipment and the format that suits your routine.',
       tags: ['Value for money', 'Time well spent', 'In person or online'],
     },
     emagrecimento: {
+      alt: 'Marcus Thomaz sweating on a stationary bike at the gym',
       title: 'Weight loss', line: 'Lose fat, keep muscle.',
       text: 'Strength and conditioning, HIIT included, dosed for your level and built into a realistic routine. Lose weight in a way that keeps it off.',
       tags: ['Fat loss', 'Conditioning', 'HIIT'],
     },
     hipertrofia: {
+      alt: "Marcus Thomaz's sweaty face after a set at the gym",
       title: 'Muscle growth', line: 'Progressive load, with technique.',
       text: 'Strength training built for your body and your week. Corrected form, logged loads and planned progression, no random workouts.',
       tags: ['Weight training', 'Strength', 'Technique'],
@@ -136,6 +141,10 @@ export default {
       logoAlt: 'Marcus Thomaz, personal trainer',
       askPre: 'Do you really', ask: 'Train?', askSub: 'Get to know your training variables.',
       promise: 'Committed to your results.',
+      reel: 'Strength on the climb', reelTag: 'Reel',
+      reelAlt: 'Video: Marcus Thomaz riding a mountain bike up a trail',
+      pbAlt: 'Marcus Thomaz cycling on a road, in black and white',
+      costasAlt: 'Marcus Thomaz seen from behind, cycling on a country road',
     },
     faq: { hello: 'Hi! I’m Marcus. What would you like to know before getting started?', cta: 'Request my assessment' },
     contact: {

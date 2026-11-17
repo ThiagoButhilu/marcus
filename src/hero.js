@@ -1,14 +1,17 @@
 import { animate, scroll, stagger } from 'motion'
 import { $, $$, clamp, lerp, smooth, reduced, profile } from './lib.js'
 import { UI } from './i18n.js'
-import heroVideo from './assets/hero-subida.mp4'
-import heroPoster from './assets/hero-subida.jpg'
+import videoDesktop from './assets/hero-marcus-desktop.mp4'
+import posterDesktop from './assets/hero-marcus-desktop.jpg'
+import videoMobile from './assets/hero-marcus-mobile.mp4'
+import posterMobile from './assets/hero-marcus-mobile.jpg'
 
 /*
   Herói: o título "treino sem atalhos" estica de condensado para expandido enquanto a página sobe.
   Atrás dele, um perfil de altimetria se desenha (como o de uma subida de pedal) com o ciclista na ponta.
   No fim, um "atalho" em linha reta aparece e é riscado.
-  Ao fundo, o vídeo de uma subida anda quadro a quadro com a rolagem (com movimento reduzido ou economia de dados, fica só o pôster).
+  Ao fundo, o vídeo do Marcus subindo a estrada anda quadro a quadro com a rolagem (com movimento reduzido ou economia de dados, fica só o pôster).
+  O vídeo é vertical: no celular entra inteiro; no desktop vai um recorte quadrado cujo enquadramento sobe junto com o Marcus.
 */
 const W0 = 64 // largura inicial da fonte (condensada)
 const W1 = 125 // largura final (expandida)
@@ -23,7 +26,8 @@ export function initHero() {
   let el = {}
 
   const video = $('#hero-video')
-  video.poster = heroPoster
+  const wide = DESKTOP.matches
+  video.poster = wide ? posterDesktop : posterMobile
   const still = reduced || navigator.connection?.saveData
   let want = 0, raf = 0
   // um pedido de seek por vez: o próximo só sai quando o anterior terminou
@@ -33,13 +37,17 @@ export function initHero() {
     if (Math.abs(video.currentTime - want) > 1 / 30) video.currentTime = want
   }
   const scrub = (v) => {
+    const k = clamp(v / 0.9)
+    if (wide && !still) video.style.objectPosition = `50% ${lerp(90, 35, k).toFixed(1)}%`
     if (!video.duration) return
-    want = clamp(v / 0.9) * (video.duration - 0.05)
+    want = k * (video.duration - 0.05)
     if (!raf) raf = requestAnimationFrame(seek)
   }
-  if (still) video.style.opacity = '1'
-  else {
-    video.src = heroVideo
+  if (still) {
+    video.style.opacity = '1'
+    if (wide) video.style.objectPosition = '50% 90%'
+  } else {
+    video.src = wide ? videoDesktop : videoMobile
     video.preload = 'auto'
     video.addEventListener('loadeddata', () => { video.style.opacity = '1'; scrub(p) }, { once: true })
     video.addEventListener('seeked', () => { if (!raf) raf = requestAnimationFrame(seek) })

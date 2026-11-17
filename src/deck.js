@@ -1,4 +1,4 @@
-import { $, $$ } from './lib.js'
+import { $, $$, reduced } from './lib.js'
 import { SITE } from './data.js'
 import { UI } from './i18n.js'
 import postSaude from './assets/post-saude-desculpas.webp'
@@ -7,16 +7,28 @@ import postHabitos from './assets/post-habitos.webp'
 import logoClaro from './assets/logo-claro.png'
 import fotoPedal from './assets/foto-pedal.webp'
 import fotoSubida from './assets/foto-subida.webp'
+import fotoPb from './assets/foto-pb.webp'
+import fotoCostas from './assets/foto-costas.webp'
+import reelLadeira from './assets/reel-ladeira.mp4'
+import reelPoster from './assets/reel-ladeira.jpg'
 
 /*
-  Baralho: posts do perfil (os banners do mídia kit) intercalados com fotos do Marcus.
+  Baralho: posts do perfil (os banners do mídia kit) intercalados com fotos e um vídeo do Marcus.
   Arraste o cartão de cima para o lado e ele vai para o fim do baralho.
+  O vídeo toca mudo, em loop, só enquanto o baralho está na tela (com movimento reduzido, fica parado).
   Para trocar um post, coloque a imagem 4:5 em src/assets e importe aqui.
 */
 const post = (src, alt) => `<img src="${src}" alt="${alt}" class="size-full object-cover" draggable="false" />`
 
 const TILES = [
   post(postSaude, UI.deck.postSaude),
+  `<div class="relative h-full bg-tinta text-gelo">
+     <video src="${reelLadeira}" poster="${reelPoster}" class="deck-reel absolute inset-0 size-full object-cover" muted loop playsinline preload="none" aria-label="${UI.deck.reelAlt}"></video>
+     <div class="absolute inset-0 flex flex-col justify-between bg-gradient-to-t from-tinta/75 via-transparent to-transparent p-[7cqw]">
+       <span class="sub self-start rounded-full bg-tinta/60 px-[3.4cqw] pb-[1.2cqw] pt-[1.8cqw] text-[4.4cqw]">▶ ${UI.deck.reelTag}</span>
+       <p class="display text-[12cqw]">${UI.deck.reel}</p>
+     </div>
+   </div>`,
   `<div class="relative h-full bg-tinta text-gelo">
      <img src="${fotoPedal}" alt="${UI.deck.pedalAlt}" class="absolute inset-0 size-full object-cover" draggable="false" />
      <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-tinta/85 via-tinta/30 to-transparent p-[7cqw]">
@@ -26,7 +38,9 @@ const TILES = [
      </div>
    </div>`,
   post(postEnergia, UI.deck.postEnergia),
+  post(fotoPb, UI.deck.pbAlt),
   post(postHabitos, UI.deck.postHabitos),
+  post(fotoCostas, UI.deck.costasAlt),
   `<div class="relative h-full bg-petroleo text-gelo">
      <img src="${fotoSubida}" alt="${UI.deck.subidaAlt}" class="absolute inset-0 size-full object-cover" draggable="false" />
      <div class="absolute inset-0 flex flex-col gap-[6cqw] bg-gradient-to-b from-petroleo/90 via-petroleo/45 to-transparent p-[7cqw]">
@@ -43,6 +57,9 @@ export function initDeck() {
   const host = $('#deck'), n = TILES.length
   host.innerHTML = TILES.map((t, i) => `<div class="deck-card" data-i="${i}">${t}</div>`).join('')
   const els = $$('.deck-card', host)
+
+  const reel = $('.deck-reel', host)
+  if (!reduced) new IntersectionObserver(([e]) => (e.isIntersecting ? reel.play().catch(() => {}) : reel.pause()), { rootMargin: '100px' }).observe(host)
   let order = els.map((_, i) => i)
   let busy = false
 

@@ -31,10 +31,13 @@ Cores e fontes do mídia kit ficam no topo de `src/style.css` (`@theme`). Logo e
 `marca.png` é o logo sem "Personal Trainer" (usado no topo como máscara, herda a cor da seção), `logo.png` / `logo-claro.png` são o logo completo
 e `post-*.webp` são os banners que aparecem no baralho da seção Instagram (`src/deck.js`).
 
-O fundo do herói é `src/assets/hero-subida.mp4` (com o pôster `hero-subida.jpg`): o vídeo anda quadro a quadro com a rolagem (`src/hero.js`).
-Fonte: "Cyclist Climbing Mauna Kea in Hawaii", de Tiago Espindola de Oliveira, na Pexels (pexels.com/video/31312083), licença Pexels (uso livre, sem crédito obrigatório).
-Ele foi cortado nos 10 primeiros segundos, reduzido para 1280px, sem áudio, com duotone preto/petróleo e um keyframe a cada 3 quadros para a rolagem responder rápido.
+O fundo do herói é o vídeo do Marcus subindo a estrada ("Santa Leopoldina - Filme Lento"), que anda quadro a quadro com a rolagem (`src/hero.js`).
+São duas versões em `src/assets/`: `hero-marcus-mobile.mp4` (vertical, inteira) e `hero-marcus-desktop.mp4` (recorte quadrado; o enquadramento sobe junto com ele na rolagem), cada uma com o seu pôster `.jpg`.
+Ambas foram cortadas em 23,5 s, a 15 quadros por segundo, sem áudio, com duotone preto/petróleo e um keyframe a cada 3 quadros para a rolagem responder rápido.
 Com movimento reduzido ou economia de dados ativada, fica só o pôster.
+
+Os pilares usam fotos do Marcus (`src/assets/pilar-*.webp`); o ponto da foto que fica sempre à vista é o `pos` de cada pilar em `src/data.js`.
+O baralho do Instagram tem também o vídeo "Força na ladeira" (`reel-ladeira.mp4`, mudo, em loop enquanto está na tela) e as fotos `foto-pb.webp` e `foto-costas.webp`.
 A fonte de corpo é Glacial Indifference; como ela não está no Google Fonts, o site usa Jost quando ela não está instalada.
 
 ## GitHub Pages

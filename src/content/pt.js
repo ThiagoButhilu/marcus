@@ -37,26 +37,31 @@ export default {
   /* "o quê": os cinco pilares do serviço, pela chave */
   MODS: {
     saude: {
+      alt: 'Marcus Thomaz com a bicicleta numa estrada com neblina',
       title: 'Saúde e bem-estar', line: 'Para viver mais e melhor.',
       text: 'Treino, sono, movimento no dia a dia e respeito ao seu histórico. O corpo cuidado para durar, não só para a próxima foto.',
       tags: ['Longevidade', 'Prevenção', 'Disposição'],
     },
     comportamental: {
+      alt: 'Marcus Thomaz subindo sozinho uma estrada longa de bicicleta',
       title: 'Comportamental', line: 'Disciplina que vira hábito.',
       text: 'O resultado vem do que se repete. Rotina organizada, metas por etapa e acompanhamento próximo para você não depender de motivação.',
       tags: ['Hábito', 'Disciplina', 'Constância'],
     },
     economico: {
+      alt: 'Marcus Thomaz pedalando numa estrada rural',
       title: 'Econômico', line: 'Resultado sem desperdício.',
       text: 'Cada sessão tem propósito: nada de pagar por treino aleatório ou perder tempo na academia. O plano é feito para o seu local, o seu equipamento e o formato que cabe na sua rotina.',
       tags: ['Custo-benefício', 'Tempo bem usado', 'Presencial ou online'],
     },
     emagrecimento: {
+      alt: 'Marcus Thomaz suado na bicicleta ergométrica da academia',
       title: 'Emagrecimento', line: 'Perder gordura, manter músculo.',
       text: 'Força e condicionamento, HIIT incluso, dosados para o seu nível e somados a uma rotina possível. Emagrecer de um jeito que o peso não volte.',
       tags: ['Perda de gordura', 'Condicionamento', 'HIIT'],
     },
     hipertrofia: {
+      alt: 'Rosto suado do Marcus Thomaz depois de uma série na academia',
       title: 'Hipertrofia', line: 'Carga que progride, com técnica.',
       text: 'Treino de força montado para o seu corpo e a sua semana. Execução corrigida, cargas registradas e progressão planejada, sem treino aleatório.',
       tags: ['Musculação', 'Força', 'Técnica'],
@@ -143,6 +148,10 @@ export default {
       logoAlt: 'Marcus Thomaz, personal trainer',
       askPre: 'Será que você', ask: 'Treina?', askSub: 'Conheça as variáveis do seu treino.',
       promise: 'Compromisso com o seu resultado.',
+      reel: 'Força na ladeira', reelTag: 'Reel',
+      reelAlt: 'Vídeo: Marcus Thomaz subindo uma trilha de mountain bike',
+      pbAlt: 'Marcus Thomaz pedalando numa estrada, em preto e branco',
+      costasAlt: 'Marcus Thomaz de costas, pedalando numa estrada rural',
     },
     faq: { hello: 'Oi! Sou o Marcus. O que você quer saber antes de começar?', cta: 'Pedir minha avaliação' },
     contact: {
