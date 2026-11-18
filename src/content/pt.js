@@ -4,7 +4,10 @@
   Cores, números e contatos ficam em data.js; aqui só o que muda de idioma.
   Os textos fixos do index.html já estão em português; a versão em inglês deles fica em en.js (STATIC).
 */
+import PLANS_PAGE from './planos.pt.js'
+
 export default {
+  PLANS_PAGE,
   htmlLang: 'pt-BR',
   ogLocale: 'pt_BR',
 
@@ -95,7 +98,7 @@ export default {
     ['Serve para quem pedala ou corre?', 'Serve. A musculação e o condicionamento entram em volta do seu treino de rua, sem um atrapalhar o outro.'],
     ['E se eu tiver lesão ou problema de saúde?', 'Conte na avaliação. O treino respeita o seu histórico e, quando fizer sentido, é alinhado com o seu médico.'],
     ['O que acontece depois que eu contrato?', 'Você preenche a anamnese, a gente revisa tudo numa videochamada e o treino começa. Depois, o seu feedback ajusta cada ciclo.'],
-    ['Quanto custa?', 'Depende do formato e da frequência. Peça a avaliação e receba as opções pelo WhatsApp.'],
+    ['Quanto custa?', 'Depende da modalidade e do número de sessões. <a class="underline underline-offset-2" href="planos.html">Veja os planos e valores</a> ou peça a avaliação pelo WhatsApp.'],
   ],
 
   GOALS: ['Emagrecer', 'Hipertrofia', 'Saúde e bem-estar', 'Criar constância', 'Performance no pedal ou na corrida', 'Voltar a treinar'],
@@ -110,6 +113,12 @@ export default {
     'Voltar a treinar': ['Adaptação', 'Caminhada', 'Adaptação', 'Mobilidade', 'Força leve', 'Passeio ativo', 'Alongar'],
   },
 
+  /* calculadora de volume: nomes dos músculos, pelo id (faixas em data.js) */
+  MUSCLES: {
+    peito: 'Peitoral', costas: 'Costas', ombros: 'Ombros', biceps: 'Bíceps', triceps: 'Tríceps',
+    quadriceps: 'Quadríceps', posteriores: 'Posteriores de coxa', gluteos: 'Glúteos', panturrilhas: 'Panturrilhas', abdomen: 'Abdômen',
+  },
+
   FORMAT_CHOICES: ['Presencial', 'Online', 'Ainda não sei'],
 
   /* textos que os scripts escrevem na página */
@@ -122,7 +131,7 @@ export default {
       shortcut: 'atalho',
       noShortcut: 'atalho: não existe',
     },
-    stops: { top: 'Início', marcus: 'Marcus', mitos: 'Por quê', variaveis: 'Variáveis', treinos: 'Pilares', metodo: 'Como', contato: 'Avaliação' },
+    stops: { top: 'Início', marcus: 'Marcus', mitos: 'Por quê', variaveis: 'Variáveis', calculadora: 'Calculadora', treinos: 'Pilares', metodo: 'Como', contato: 'Avaliação' },
     menu: { open: 'Menu', close: 'Fechar' },
     reasons: {
       now: 'Hoje', gain: 'Com treino', flip: 'Toque para virar ↻',
@@ -137,6 +146,53 @@ export default {
       cta: 'Quero esse',
       goTo: (t) => `Ir para ${t}`,
       prefill: (t) => `Vi o pilar ${t} no site e quero saber como funciona para o meu caso.`,
+    },
+    calc: {
+      tabsLabel: 'Calculadoras de treino',
+      tabs: ['Séries por músculo', 'Volume da sessão', 'Volume da semana', 'Teste de 2400 m', 'HIIT'],
+      hints: ['O jeito mais simples', 'Séries × reps × carga', 'A semana inteira em kg', 'Ritmo e tiros de corrida', 'Pelo seu Tempo Limite'],
+      muscleIntro: 'Quantas séries de trabalho você faz por semana para cada músculo? Aquecimento não conta.',
+      range: (a, b) => `Faixa: ${a}–${b} séries`,
+      status: { low: 'Abaixo', ok: 'Na faixa', high: 'Acima' },
+      inRange: 'Músculos na faixa de referência',
+      muscleTip: 'Cada músculo tem o seu volume ideal: o de quadríceps é diferente do de peitoral. A faixa certa para você sai da avaliação.',
+      sessionIntro: 'Para cada exercício, multiplique séries × repetições × carga. Some tudo e você tem o volume de uma sessão.',
+      exercise: 'Exercício', setsL: 'Séries', reps: 'Repetições', kg: 'Carga (kg)',
+      examples: [{ name: 'Supino', sets: 3, reps: 10, kg: 40 }, { name: 'Remada', sets: 3, reps: 10, kg: 35 }, { name: 'Agachamento', sets: 4, reps: 8, kg: 60 }],
+      add: '+ Adicionar exercício',
+      remove: (name) => `Remover ${name}`,
+      sessionTotal: 'Volume da sessão',
+      weekIntro: 'Uma conta só para a semana: séries × repetições × carga × número de exercícios × treinos por semana.',
+      fields: { sets: 'Séries por exercício', reps: 'Repetições por série', kg: 'Carga média (kg)', ex: 'Número de exercícios', freq: 'Treinos por semana' },
+      short: { sets: 'séries', reps: 'reps', ex: 'exercícios', freq: 'treinos' },
+      weekTotal: 'Volume da semana',
+      runIntro: 'Corra 2400 m no seu melhor ritmo, num percurso plano ou na pista, e digite o tempo.',
+      minutes: 'Minutos', seconds: 'Segundos',
+      runHow: 'O ritmo é o tempo dividido por 2,4 km. Os tiros saem do mesmo tempo: quanto mais curto o tiro, mais rápido ele é.',
+      runPace: 'Seu ritmo nos 2400 m',
+      runEmpty: 'Digite o seu tempo nos 2400 m (pelo menos 1 minuto).',
+      runTime: (t) => `Tempo: ${t}`,
+      splitsTitle: 'Tempo-alvo dos tiros',
+      between: (a, b) => `${a} a ${b}`,
+      splitsHow: 'Base de cada tiro: o tempo dos 2400 m ÷ 6 (400 m), ÷ 3 (800 m) e ÷ 2 (1200 m). O alvo é 70–75%, 80–85% e 90–95% dessa base.',
+      hiitIntro: 'Com os resultados do teste de iVO2máx e do teste de Tempo Limite, monte a sessão: o tempo total de tiros é cerca de 3 vezes o seu Tempo Limite.',
+      hiitFields: { vmax: 'iVO2máx (km/h)', tlim: 'Tempo Limite (min)', work: 'Tiro (segundos)', ratio: 'Recuperação : esforço', warm: 'Aquecimento (min)' },
+      hiitHow: 'Tempo Limite é quanto tempo você aguenta correndo na sua iVO2máx. Os dois testes são feitos na avaliação.',
+      hiitLabel: 'Sua sessão de HIIT',
+      hiitReps: (n) => (n === 1 ? 'tiro' : 'tiros'),
+      hiitRows: { work: 'Cada tiro', rest: 'Descanso entre tiros', dist: 'Distância por tiro', effort: 'Tempo total de tiros', total: 'Sessão com aquecimento' },
+      hiitMath: (tlim, goal, work, reps) => `A conta: 3 × ${tlim} min de Tempo Limite = ${goal} de tiros. ${goal} ÷ ${work} por tiro ≈ ${reps} ${reps === 1 ? 'tiro' : 'tiros'}.`,
+      formula: 'A conta',
+      minus: (l) => `Diminuir ${l}`, plus: (l) => `Aumentar ${l}`,
+      cta: 'Ajustar isso com o Marcus',
+      note: 'Calculadora educativa. O treino certo para o seu corpo e o seu objetivo sai da avaliação.',
+      prefill: {
+        muscle: (list) => `Calculei meu volume no site. Séries por semana: ${list}. Quero ajustar isso com você.`,
+        session: (v) => `Calculei meu volume no site: ${v} por sessão. Quero ajustar isso com você.`,
+        week: (v) => `Calculei meu volume no site: ${v} por semana. Quero ajustar isso com você.`,
+        run: (t, pace) => `Fiz o teste de 2400 m em ${t} (${pace}/km). Quero montar meus tiros com você.`,
+        hiit: (n, work, v, rest, tlim) => `Montei um HIIT no site: ${n} tiros de ${work} a ${v} km/h, com ${rest} de descanso (Tempo Limite de ${tlim} min). Quero revisar com você.`,
+      },
     },
     method: {
       phases: ['Antes de começar', 'Treino', 'A cada ciclo'],

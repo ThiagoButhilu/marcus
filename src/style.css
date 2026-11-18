@@ -52,7 +52,7 @@
   .pill {
     display: inline-flex; align-items: center; gap: 0.5rem;
     border: 1.5px solid currentColor; border-radius: 999px;
-    padding: 0.55rem 1.1rem 0.45rem; font-family: var(--font-sub); font-size: 0.95rem; font-weight: 600; line-height: 1;
+    padding: 0.55rem 1.1rem 0.45rem; font-family: var(--font-sub); font-size: 0.95rem; font-weight: 600; line-height: 1; white-space: nowrap;
     transition: background-color 0.3s, color 0.3s, transform 0.4s var(--ease-expo);
   }
   .pill:hover { background: var(--fg); color: var(--bg); }
@@ -131,6 +131,34 @@
   .tag { display: inline-flex; border-radius: 999px; padding: 0.45rem 0.85rem 0.35rem; font-family: var(--font-sub); font-size: 0.9rem; font-weight: 600; box-shadow: inset 0 0 0 1.5px currentColor; }
   .dotnav { width: 0.7rem; height: 0.7rem; border-radius: 99px; background: currentColor; opacity: 0.3; transition: opacity 0.3s, transform 0.4s var(--ease-expo); }
   .dotnav[aria-current="true"] { opacity: 1; transform: scale(1.5); }
+
+  /* ---------- calculadora de volume ---------- */
+  .calc-tab {
+    border-radius: 1.2rem; padding: 0.75rem 1.1rem 0.7rem; text-align: left; font-family: var(--font-sub); font-weight: 700; font-size: 1rem; line-height: 1.15;
+    box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--fg) 45%, transparent); transition: background-color 0.3s, color 0.3s;
+  }
+  .calc-tab:hover { box-shadow: inset 0 0 0 1.5px var(--fg); }
+  .calc-tab[aria-selected="true"] { background: #faf7f0; color: #000000; box-shadow: none; }
+  .stepper {
+    display: inline-grid; grid-template-columns: 2.6rem minmax(2.6rem, 4.2rem) 2.6rem; align-items: center; justify-self: start;
+    border-radius: 999px; background: #faf7f0; box-shadow: inset 0 0 0 1.5px rgb(0 0 0 / 0.14); transition: box-shadow 0.25s;
+  }
+  .stepper:focus-within { box-shadow: inset 0 0 0 2px #000000; }
+  .stepper button { height: 2.6rem; border-radius: 999px; font-size: 1.25rem; font-weight: 700; line-height: 1; transition: background-color 0.2s, transform 0.3s var(--ease-expo); }
+  .stepper button:hover { background: #98b7ba; }
+  .stepper button:active { transform: scale(0.9); }
+  .stepper input { width: 100%; min-width: 0; background: transparent; text-align: center; font-weight: 700; font-size: 1.05rem; font-variant-numeric: tabular-nums; outline: none; }
+
+  /* ---------- página de planos: escolhas do montador ---------- */
+  .plan-card, .plan-opt {
+    border-radius: 1.4rem; background: #fff; text-align: left; box-shadow: inset 0 0 0 2px transparent;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.35s var(--ease-expo);
+  }
+  .plan-card { padding: 1.2rem 1.25rem; }
+  .plan-opt { padding: 0.75rem 1.1rem 0.7rem; font-family: var(--font-sub); font-weight: 700; line-height: 1.2; }
+  .plan-card:hover, .plan-opt:hover { box-shadow: inset 0 0 0 2px #000000; }
+  .plan-card:active, .plan-opt:active { transform: scale(0.98); }
+  .plan-card[aria-checked="true"], .plan-opt[aria-checked="true"] { background: #000000; color: #faf7f0; }
 
   /* ---------- presencial / online ---------- */
   .seg { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; border-radius: 999px; padding: 0.3rem; box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--fg) 40%, transparent); }

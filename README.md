@@ -16,6 +16,30 @@ Os textos ficam em `src/content/`: `pt.js` (português, padrão) e `en.js` (ingl
 Os textos fixos do `index.html` estão em português; a versão em inglês deles fica no `STATIC` de `en.js`, com o texto em português como chave.
 Se mudar um texto no HTML, atualize a chave no `STATIC` também, senão ele aparece em português no site em inglês.
 
+## Calculadoras de treino
+
+A seção "Quanto você treina de verdade?" (`src/calculator.js`) tem cinco abas.
+As três primeiras seguem o post do Marcus sobre volume para hipertrofia: séries por músculo (comparadas com uma faixa de referência),
+volume da sessão (séries × repetições × carga de cada exercício, somados) e volume da semana
+(séries × repetições × carga × número de exercícios × treinos por semana).
+A faixa de cada músculo fica em `MUSCLES`, em `src/data.js`. Hoje todas usam a referência geral de 10 a 20 séries semanais;
+troque pelos números do Marcus quando ele mandar.
+
+As duas últimas seguem a planilha do Marcus (aba "Teste de TLim; iVVO2 Máx; 2400"):
+- Teste de 2400 m: ritmo, velocidade e tempo-alvo dos tiros de 400, 800 e 1200 m (`RUN_SPLITS` em `src/data.js`).
+  Três células da planilha usam B57 no lugar de B47 (os segundos) e erram o ritmo, a velocidade e a base do 800 m; o site usa a conta certa.
+- HIIT: tempo total de tiros = 3 × Tempo Limite (`HIIT_EFFORT_X`), dividido pela duração do tiro e arredondado;
+  o descanso sai da relação recuperação:esforço (`HIIT_RATIOS`, a lista da planilha).
+
+Os nomes dos músculos e os textos ficam em `src/content/`.
+
+## Página de planos
+
+`planos.html` (script em `src/planos.js`) mostra os planos do "Programa de Condicionamento Físico e Nutricional" (versão 2026):
+montador de plano com valor na hora e botão que abre o WhatsApp com o plano escolhido, tabela completa, fases do programa,
+parceiros, locais e regras. Valores em `PLANS` (`src/data.js`); textos em `src/content/planos.pt.js` e `planos.en.js`.
+O `vite.config.js` gera as duas páginas na build. A landing leva para ela pelo menu, pela pergunta "Quanto custa?" e pela seção de contato.
+
 ## Idiomas
 
 O seletor PT | EN fica no topo. A escolha fica salva no navegador; `?lang=en` (ou `?lang=pt`) na URL força um idioma, bom para mandar o link.

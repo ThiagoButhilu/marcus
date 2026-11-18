@@ -3,7 +3,10 @@
   STATIC traduz os textos fixos do index.html: a chave é o texto em português, exatamente como está no HTML.
   Se um texto do HTML mudar, atualize a chave aqui também (senão ele fica em português na versão em inglês).
 */
+import PLANS_PAGE from './planos.en.js'
+
 export default {
+  PLANS_PAGE,
   htmlLang: 'en',
   ogLocale: 'en_US',
 
@@ -90,7 +93,7 @@ export default {
     ['Does it work for cyclists or runners?', 'Yes. Strength and conditioning are built around your outdoor training, so one does not get in the way of the other.'],
     ['What if I have an injury or health issue?', 'Tell me in the assessment. Your training respects your history and, when it makes sense, is aligned with your doctor.'],
     ['What happens after I sign up?', 'You fill out the health form, we review everything on a video call and training begins. After that, your feedback adjusts every cycle.'],
-    ['How much does it cost?', 'It depends on the format and frequency. Request an assessment and get the options on WhatsApp.'],
+    ['How much does it cost?', 'It depends on the plan and the number of sessions. <a class="underline underline-offset-2" href="planos.html">See plans and pricing</a> or request an assessment on WhatsApp.'],
   ],
 
   GOALS: ['Lose weight', 'Build muscle', 'Health and well-being', 'Build consistency', 'Cycling or running performance', 'Get back to training'],
@@ -104,6 +107,11 @@ export default {
     'Get back to training': ['Adaptation', 'Walk', 'Adaptation', 'Mobility', 'Light strength', 'Active walk', 'Stretch'],
   },
 
+  MUSCLES: {
+    peito: 'Chest', costas: 'Back', ombros: 'Shoulders', biceps: 'Biceps', triceps: 'Triceps',
+    quadriceps: 'Quads', posteriores: 'Hamstrings', gluteos: 'Glutes', panturrilhas: 'Calves', abdomen: 'Abs',
+  },
+
   FORMAT_CHOICES: ['In person', 'Online', 'Not sure yet'],
 
   UI: {
@@ -115,7 +123,7 @@ export default {
       shortcut: 'shortcut',
       noShortcut: 'shortcut: doesn’t exist',
     },
-    stops: { top: 'Start', marcus: 'Marcus', mitos: 'Why', variaveis: 'Variables', treinos: 'Pillars', metodo: 'How', contato: 'Assessment' },
+    stops: { top: 'Start', marcus: 'Marcus', mitos: 'Why', variaveis: 'Variables', calculadora: 'Calculator', treinos: 'Pillars', metodo: 'How', contato: 'Assessment' },
     menu: { open: 'Menu', close: 'Close' },
     reasons: {
       now: 'Today', gain: 'With training', flip: 'Tap to flip ↻',
@@ -130,6 +138,53 @@ export default {
       cta: 'I want this',
       goTo: (t) => `Go to ${t}`,
       prefill: (t) => `I saw the ${t} pillar on the website and want to know how it works for me.`,
+    },
+    calc: {
+      tabsLabel: 'Training calculators',
+      tabs: ['Sets per muscle', 'Session volume', 'Weekly volume', '2400 m test', 'HIIT'],
+      hints: ['The simplest way', 'Sets × reps × load', 'The whole week in kg', 'Running pace and intervals', 'From your Time Limit'],
+      muscleIntro: 'How many working sets do you do per week for each muscle? Warm-up sets do not count.',
+      range: (a, b) => `Range: ${a}–${b} sets`,
+      status: { low: 'Below', ok: 'In range', high: 'Above' },
+      inRange: 'Muscles within the reference range',
+      muscleTip: 'Each muscle has its own ideal volume: quads are different from chest. The right range for you comes from the assessment.',
+      sessionIntro: 'For each exercise, multiply sets × reps × load. Add them all up and you have the volume of one session.',
+      exercise: 'Exercise', setsL: 'Sets', reps: 'Reps', kg: 'Load (kg)',
+      examples: [{ name: 'Bench press', sets: 3, reps: 10, kg: 40 }, { name: 'Row', sets: 3, reps: 10, kg: 35 }, { name: 'Squat', sets: 4, reps: 8, kg: 60 }],
+      add: '+ Add exercise',
+      remove: (name) => `Remove ${name}`,
+      sessionTotal: 'Session volume',
+      weekIntro: 'One calculation for the whole week: sets × reps × load × number of exercises × workouts per week.',
+      fields: { sets: 'Sets per exercise', reps: 'Reps per set', kg: 'Average load (kg)', ex: 'Number of exercises', freq: 'Workouts per week' },
+      short: { sets: 'sets', reps: 'reps', ex: 'exercises', freq: 'workouts' },
+      weekTotal: 'Weekly volume',
+      runIntro: 'Run 2400 m at your best pace, on a flat route or a track, and enter your time.',
+      minutes: 'Minutes', seconds: 'Seconds',
+      runHow: 'Your pace is the time divided by 2.4 km. The intervals come from the same time: the shorter the interval, the faster it is.',
+      runPace: 'Your 2400 m pace',
+      runEmpty: 'Enter your 2400 m time (at least 1 minute).',
+      runTime: (t) => `Time: ${t}`,
+      splitsTitle: 'Interval target times',
+      between: (a, b) => `${a} to ${b}`,
+      splitsHow: 'Base for each interval: your 2400 m time ÷ 6 (400 m), ÷ 3 (800 m) and ÷ 2 (1200 m). The target is 70–75%, 80–85% and 90–95% of that base.',
+      hiitIntro: 'With your vVO2max and Time Limit test results, build the session: the total interval time is about 3 times your Time Limit.',
+      hiitFields: { vmax: 'vVO2max (km/h)', tlim: 'Time Limit (min)', work: 'Interval (seconds)', ratio: 'Recovery : effort', warm: 'Warm-up (min)' },
+      hiitHow: 'Time Limit is how long you can keep running at your vVO2max. Both tests are done in the assessment.',
+      hiitLabel: 'Your HIIT session',
+      hiitReps: (n) => (n === 1 ? 'interval' : 'intervals'),
+      hiitRows: { work: 'Each interval', rest: 'Rest between intervals', dist: 'Distance per interval', effort: 'Total interval time', total: 'Session with warm-up' },
+      hiitMath: (tlim, goal, work, reps) => `The math: 3 × ${tlim} min Time Limit = ${goal} of intervals. ${goal} ÷ ${work} per interval ≈ ${reps} ${reps === 1 ? 'interval' : 'intervals'}.`,
+      formula: 'The math',
+      minus: (l) => `Decrease ${l}`, plus: (l) => `Increase ${l}`,
+      cta: 'Adjust this with Marcus',
+      note: 'Educational calculator. The right training for your body and your goal comes from the assessment.',
+      prefill: {
+        muscle: (list) => `I calculated my volume on the website. Sets per week: ${list}. I want to adjust it with you.`,
+        session: (v) => `I calculated my volume on the website: ${v} per session. I want to adjust it with you.`,
+        week: (v) => `I calculated my volume on the website: ${v} per week. I want to adjust it with you.`,
+        run: (t, pace) => `I did the 2400 m test in ${t} (${pace}/km). I want to plan my intervals with you.`,
+        hiit: (n, work, v, rest, tlim) => `I built a HIIT session on the website: ${n} intervals of ${work} at ${v} km/h, with ${rest} rest (Time Limit of ${tlim} min). I want to review it with you.`,
+      },
     },
     method: {
       phases: ['Before you start', 'Training', 'Every cycle'],
@@ -192,6 +247,22 @@ export default {
     'Idioma': 'Language',
     'Variáveis': 'Variables',
     'Pilares': 'Pillars',
+    'Planos': 'Plans',
+    'Planos e valores': 'Plans and pricing',
+    'Ver planos e valores': 'See plans and pricing',
+    '← Voltar ao site': '← Back to the website',
+    'Falar com o Marcus': 'Talk to Marcus',
+    'Planos e valores | Marcus Thomaz, personal trainer': 'Plans and pricing | Marcus Thomaz, personal trainer',
+    'Planos do Marcus Thomaz: personal presencial ou on-line, small group e consultoria com ou sem nutrição. Valores, condições e contratação pelo WhatsApp.':
+      'Marcus Thomaz plans: in-person or online personal training, small group and remote coaching with or without nutrition. Prices, terms and sign-up on WhatsApp.',
+    'Planos e valores | Marcus Thomaz': 'Plans and pricing | Marcus Thomaz',
+    'Personal presencial ou on-line, small group e consultoria. Monte o seu plano e contrate pelo WhatsApp.':
+      'In-person or online personal training, small group and remote coaching. Build your plan and sign up on WhatsApp.',
+    'Calculadora': 'Calculator',
+    'Calculadoras de treino': 'Training calculators',
+    'Quanto você treina de verdade?': 'How much do you really train?',
+    'Volume da musculação, ritmo de corrida e HIIT: escolha uma calculadora e veja a conta acontecer, do jeito que o Marcus faz com os alunos.':
+      'Weight training volume, running pace and HIIT: pick a calculator and watch the math happen, the way Marcus does it with his clients.',
     'Como funciona': 'How it works',
     'Perguntas': 'Questions',
     'Pedir avaliação': 'Request an assessment',

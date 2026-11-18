@@ -27,12 +27,14 @@
           <span class="brand-mark w-full" aria-hidden="true"></span>
           <span class="logo-ring" aria-hidden="true"></span>
         </a>
-        <nav class="hidden items-center gap-2 md:flex" aria-label="Seções">
+        <nav class="hidden items-center gap-2 xl:flex" aria-label="Seções">
           <a class="pill" href="#marcus">Marcus</a>
           <a class="pill" href="#variaveis">Variáveis</a>
+          <a class="pill" href="#calculadora">Calculadora</a>
           <a class="pill" href="#treinos">Pilares</a>
           <a class="pill" href="#metodo">Como funciona</a>
           <a class="pill" href="#faq">Perguntas</a>
+          <a class="pill" href="planos.html">Planos</a>
         </nav>
         <div class="flex items-center gap-2">
           <div class="lang" role="group" aria-label="Idioma">
@@ -40,7 +42,7 @@
             <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
           </div>
           <a class="btn btn-hot !px-5 !py-3 max-md:hidden" href="#contato">Pedir avaliação <i data-arr></i></a>
-          <button id="menu-btn" type="button" class="pill md:hidden" aria-expanded="false" aria-controls="menu">
+          <button id="menu-btn" type="button" class="pill xl:hidden" aria-expanded="false" aria-controls="menu">
             <span id="menu-label">Menu</span>
           </button>
         </div>
@@ -53,9 +55,11 @@
         <a class="menu-link" href="#marcus">Marcus</a>
         <a class="menu-link" href="#mitos">Por que treinar</a>
         <a class="menu-link" href="#variaveis">Variáveis</a>
+        <a class="menu-link" href="#calculadora">Calculadora</a>
         <a class="menu-link" href="#treinos">Pilares</a>
         <a class="menu-link" href="#metodo">Como funciona</a>
         <a class="menu-link" href="#faq">Perguntas</a>
+        <a class="menu-link" href="planos.html">Planos</a>
       </nav>
       <a id="menu-wa" class="btn btn-hot self-start" href="#" target="_blank" rel="noopener">Chamar no WhatsApp <i data-arr></i></a>
     </div>
@@ -170,6 +174,21 @@
         </div>
       </section>
 
+      <!-- calculadoras de treino: volume (post do Marcus), teste de 2400 m e HIIT (planilha do Marcus) -->
+      <section id="calculadora" data-nav="dark" class="tone-dark bg-tinta px-4 py-24 text-gelo md:px-8 md:py-36">
+        <div class="mx-auto max-w-[96rem]">
+          <p class="sub mb-4 text-[1.05rem] opacity-70">Calculadoras de treino</p>
+          <h2 class="display max-w-[14ch] text-[clamp(3.2rem,9vw,8rem)]">Quanto você treina de verdade?</h2>
+          <p class="mt-6 max-w-[36rem] text-lg leading-relaxed opacity-85">Volume da musculação, ritmo de corrida e HIIT: escolha uma calculadora e veja a conta acontecer, do jeito que o Marcus faz com os alunos.</p>
+
+          <div id="calc-tabs" role="tablist" class="mt-10 flex flex-wrap gap-2"></div>
+          <div id="calc-panel" role="tabpanel" class="mt-5 grid grid-cols-[minmax(0,1fr)] gap-4 rounded-[2rem] bg-gelo p-4 text-tinta md:p-6 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+            <div id="calc-inputs"></div>
+            <div id="calc-result" class="tone-dark rounded-[1.5rem] bg-petroleo p-6 text-gelo md:p-8 lg:sticky lg:top-24"></div>
+          </div>
+        </div>
+      </section>
+
       <!-- o quê: a rolagem vertical empurra os painéis dos cinco pilares para o lado -->
       <section id="treinos" aria-label="Os cinco pilares do serviço">
         <div id="treinos-stage" class="sticky top-0 h-svh overflow-hidden">
@@ -240,6 +259,10 @@
               <div>
                 <dt class="text-sm opacity-70">Atendimento</dt>
                 <dd class="text-xl font-semibold">Presencial e online</dd>
+              </div>
+              <div>
+                <dt class="text-sm opacity-70">Planos e valores</dt>
+                <dd><a class="text-xl font-semibold underline decoration-bruma decoration-2 underline-offset-4" href="planos.html">Ver planos e valores</a></dd>
               </div>
             </dl>
           </div>

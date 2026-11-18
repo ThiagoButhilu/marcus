@@ -4,6 +4,7 @@ import { initI18n } from './i18n.js'
 import { initHero } from './hero.js'
 import { initMyths } from './myths.js'
 import { initVariables } from './variables.js'
+import { initCalculator } from './calculator.js'
 import { initModalities } from './modalities.js'
 import { initMethod } from './method.js'
 import { initMarcus } from './marcus.js'
@@ -19,6 +20,7 @@ const ARROW = '<svg class="arr" width="15" height="15" viewBox="0 0 16 16" fill=
 initI18n()
 initMyths()
 initVariables()
+initCalculator()
 initModalities()
 initMethod()
 initMarcus()
