@@ -57,6 +57,9 @@
   }
   .pill:hover { background: var(--fg); color: var(--bg); }
   .pill:active { transform: scale(0.96); }
+  /* link de planos no topo: preenchido para se destacar dos outros */
+  .pill-strong { background: var(--fg); color: var(--bg); }
+  .pill-strong:hover { background: transparent; color: var(--fg); }
 
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
