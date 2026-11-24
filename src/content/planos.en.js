@@ -3,7 +3,7 @@ export default {
   hero: {
     eyebrow: 'Plans and pricing',
     title: 'Choose how to train with Marcus',
-    text: 'In-person or online personal training, small group training or remote coaching. Build your plan, see the price and sign up on WhatsApp.',
+    text: 'Online or in-person personal training, small group training or remote coaching. Build your plan, see the price and sign up on WhatsApp.',
     cred: 'Marcus Thomaz, exercise science specialist · CREF 5186/ES',
   },
 
@@ -24,7 +24,7 @@ export default {
     save: (p) => `${p}% less per month`,
     includes: 'Includes',
     cta: 'Sign up on WhatsApp',
-    payment: 'Payment by PIX or credit card (Asaas), always before training starts.',
+    payment: 'Payment through the Asaas platform.',
     minPeople: 'At least 3 people, on the same days and times.',
     msg: (plan, detail, price, pair) => `Hi, Marcus! I found your plans page and would like to sign up for: ${plan}${detail ? `, ${detail}` : ''} (${price}).${pair ? ' I will train with a partner.' : ''} What are the next steps?`,
   },
@@ -32,13 +32,13 @@ export default {
   groups: {
     A: {
       name: 'Personal Trainer', tag: 'One-on-one',
-      desc: '100% exclusive coaching, in person or by video call.',
-      items: { 'A.1': 'In person', 'A.2': 'Video call' },
+      desc: '100% exclusive coaching, by video call or in person.',
+      items: { 'A.2': 'Video call', 'A.1': 'In person' },
       includes: ['Initial assessment and reassessment', 'Strength and aerobic training built for you', 'Form corrected in every session', 'Partner training with 50% off for the second person'],
     },
     B: {
       name: 'Small Group', tag: 'Small group',
-      desc: 'Training in a small group of at least 3 people, in person or online.',
+      desc: 'Training in a small group of at least 3 people, online or in person.',
       items: { 'B.1': 'Online, at home', 'B.2': 'In person' },
       includes: ['Initial assessment and reassessment', 'Group training with at least 3 people', 'Same days and times for the group'],
     },
@@ -46,7 +46,7 @@ export default {
       name: 'Remote coaching', tag: 'Digital',
       desc: 'Planning and ongoing support through the app, at your own pace.',
       items: { 'C.1': 'Personal Trainer coaching' },
-      includes: ['Individual program based on your health form and movement assessment', 'App with videos and instructions for every exercise', 'Q&A support with answers within 6 hours'],
+      includes: ['Health form and review by video call (20 min)', 'Program sent and adjusted whenever needed', 'Q&A channel on WhatsApp', 'Weekly attendance follow-up'],
     },
     D: {
       name: 'Coaching + Nutrition', tag: 'Complete',
@@ -76,25 +76,21 @@ export default {
       { n: 'II', name: 'Prescription', text: 'A training routine that combines aerobic work (running, cycling) and strength training, with guidance and calorie control.' },
       { n: 'III', name: 'Reassessment', text: 'Comparison with your Phase I data and a report on your physical and metabolic progress.' },
     ],
-    partnersTitle: 'Recommended partners',
-    partners: [
-      { name: 'Dr. Rafael Altoé', role: 'Cardiology · Cardiodiagnóstico Vila Velha', ig: 'drrafaelaltoe' },
-      { name: 'Dr. Amy Joy Foster', role: 'Sports nutrition', ig: 'amy_jf' },
-      { name: 'O Tal Natural', role: 'Meals aligned with your diet (optional)', ig: 'otalnatural' },
-    ],
+    partnersTitle: 'Partner professionals',
+    partners: ['Cardiologist', 'Sports nutritionist'],
     goalsTitle: 'Program goals',
     goals: ['Blood pressure, cholesterol and blood sugar under control', 'Less fat, more lean mass', 'Better endurance (VO₂ max)', 'Sustainable eating habits'],
   },
 
   places: {
     eyebrow: 'Where',
-    title: 'In person in Vitória, Brazil, or online',
+    title: 'Online or in person in Vitória, Brazil',
     list: [
+      { name: 'Video call', area: 'Wherever you are' },
       { name: 'Academia Wellness', area: 'Praia de Camburi' },
       { name: 'Academia Ponto 1', area: 'Praia do Canto' },
       { name: 'Academia Bodytech', area: 'Enseada do Suá' },
       { name: 'Academia Vitória Sports', area: 'Praia do Canto' },
-      { name: 'Video call', area: 'Wherever you are' },
     ],
   },
 
@@ -102,10 +98,8 @@ export default {
     eyebrow: 'Terms',
     title: 'Clear rules from day one',
     blocks: [
-      { title: 'Payment', items: ['PIX or credit card through the Asaas platform.', 'Billed every 30 days, paid before training starts.', 'No refunds for any plan.'] },
-      { title: 'Deadlines and make-ups', items: ['A package is valid for 30 calendar days, with up to 5 extra days for justified absences.', 'Sessions outside this period cannot be made up.', 'Late arrivals are not compensated: the day’s routine must be completed within 1 hour.'] },
-      { title: 'Scheduling', items: ['Rescheduling needs at least 24 hours’ notice and depends on the trainer’s availability.', 'Prices may be adjusted with at least 30 days’ notice.'] },
-      { title: 'Remote coaching', items: ['Individual program based on your health form and movement assessment.', 'App with exercise videos and workout instructions.', 'Q&A support with answers within 6 hours.'] },
+      { title: 'Payment', items: ['Payment through the Asaas platform.', 'No refunds for any plan.'] },
+      { title: 'Remote coaching', items: ['Health form.', 'Review together by video call (20 min).', 'Program sent to you.', 'Q&A channel on WhatsApp.', 'Weekly attendance follow-up.', 'Form to request program changes.', 'Updated program sent to you.'] },
     ],
   },
 

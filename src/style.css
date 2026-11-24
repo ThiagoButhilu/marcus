@@ -160,12 +160,6 @@
   .plan-card:active, .plan-opt:active { transform: scale(0.98); }
   .plan-card[aria-checked="true"], .plan-opt[aria-checked="true"] { background: #000000; color: #faf7f0; }
 
-  /* ---------- presencial / online ---------- */
-  .seg { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; border-radius: 999px; padding: 0.3rem; box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--fg) 40%, transparent); }
-  .seg-ind { position: absolute; inset: 0.3rem auto 0.3rem 0.3rem; width: calc(50% - 0.3rem); border-radius: 999px; background: #98b7ba; transition: transform 0.55s var(--ease-expo); }
-  .seg button { position: relative; padding: 0.85rem 1.6rem 0.75rem; font-family: var(--font-sub); font-weight: 700; border-radius: 999px; transition: color 0.3s; }
-  .seg button[aria-selected="true"] { color: #000000; }
-
   /* ---------- baralho do Instagram ---------- */
   .deck-card {
     position: absolute; inset: 0; border-radius: 1.6rem; overflow: hidden; cursor: grab; will-change: transform;
@@ -214,7 +208,19 @@
   .wiz-seg i { display: block; height: 100%; width: 100%; background: #457d93; transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ease-expo); }
   .wiz-seg[data-on] i { transform: scaleX(1); }
 
-  .menu-link { font-family: var(--font-display); font-weight: 900; font-stretch: 88%; letter-spacing: -0.03em; line-height: 0.95; font-size: clamp(3rem, 15vw, 5.4rem); }
+  /* menu do celular: lista numerada, linhas alternando off-white e petróleo claro, Planos em destaque */
+  .menu-list { display: grid; counter-reset: menu; border-top: 1px solid rgb(250 247 240 / 0.15); }
+  .menu-link {
+    display: flex; align-items: baseline; gap: 0.9rem; padding: 0.55rem 0 0.45rem; border-bottom: 1px solid rgb(250 247 240 / 0.15);
+    font-family: var(--font-display); font-weight: 900; font-stretch: 88%; letter-spacing: -0.03em; line-height: 1; font-size: clamp(1.9rem, 8.6vw, 3.4rem);
+    counter-increment: menu; transition: color 0.25s, padding 0.35s var(--ease-expo);
+  }
+  .menu-link::before { content: counter(menu, decimal-leading-zero); font-family: var(--font-sub); font-weight: 700; font-size: 0.85rem; letter-spacing: 0; color: #98b7ba; min-width: 1.6rem; }
+  .menu-link:nth-child(even) { color: #98b7ba; }
+  .menu-link:nth-child(even)::before { color: #faf7f0; opacity: 0.6; }
+  .menu-link:hover, .menu-link:focus-visible { padding-left: 0.4rem; }
+  .menu-link.menu-cta { margin-top: 0.8rem; border: 0; border-radius: 999px; background: #98b7ba; color: #000000; padding: 0.7rem 1.2rem 0.6rem; }
+  .menu-link.menu-cta::before { color: #274c5f; }
 
   @media (prefers-reduced-motion: reduce) {
     .drop, .bubble, .typing i { animation: none; }

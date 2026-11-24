@@ -13,11 +13,11 @@ export default {
   DAYS: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
   REASONS: [
-    { now: 'Running out of breath on the first flight of stairs.', gain: 'Fitness is what makes the day feel lighter. Breath, energy and better sleep are health you can feel.' },
-    { now: 'Starting on Monday and quitting by Thursday.', gain: 'Consistency is built. With an organized routine and close guidance, the habit sticks and willpower stops being the plan.' },
+    { now: 'Running out of breath on the first flight of stairs.', gain: 'Good physical fitness does not just change your energy for today’s challenges — it is the foundation of your independence in the future.' },
+    { now: 'Starting on Monday and quitting by Thursday.', gain: 'A habit does not change you on the day you create it. It changes you on the day it holds you up and shows you where it can take you.' },
     { now: 'Paying for a gym you never use.', gain: 'A well-prescribed program wastes neither time nor money. And taking care of your body today is prevention for tomorrow.' },
-    { now: 'Dieting and watching the weight come back.', gain: 'Losing weight while training preserves muscle. The result lasts because your body changes too, not just your plate.' },
-    { now: 'Training for months and seeing no change.', gain: 'Muscle growth needs progressive load, the right volume and rest. Without a plan, it is just repetition.' },
+    { now: '“Losing weight”, but losing muscle too.', gain: 'Low-calorie diets and appetite suppressants, combined with strength training, tend to significantly reduce the risk of losing muscle mass.' },
+    { now: 'Training for months and seeing no change.', gain: 'Muscle growth needs progressive load, stimulus and adaptation. Volume, intensity and rest adjusted to make the most of your gains.' },
   ],
 
   VARS: {
@@ -49,9 +49,9 @@ export default {
     },
     economico: {
       alt: 'Marcus Thomaz cycling on a country road',
-      title: 'Cost-effective', line: 'Results without waste.',
+      title: 'Cost-effective', line: 'To get more done: less medicine and hospital, more physical vigor.',
       text: 'Every session has a purpose: no paying for random workouts or wasting time at the gym. The plan fits your location, your equipment and the format that suits your routine.',
-      tags: ['Value for money', 'Time well spent', 'In person or online'],
+      tags: ['Value for money', 'Time well spent', 'Online or in person'],
     },
     emagrecimento: {
       alt: 'Marcus Thomaz sweating on a stationary bike at the gym',
@@ -68,7 +68,7 @@ export default {
   },
 
   STEPS: [
-    { name: 'Sign-up', text: 'You choose in person or online and confirm the plan.' },
+    { name: 'Sign-up', text: 'You choose online or in person and confirm the plan.' },
     { name: 'Health form', text: 'An interactive form about your goal, history and routine. You learn as you answer.' },
     { name: 'Video call', text: 'We review your form together, with notes and recommendations.' },
     { name: 'First workout', text: 'Your program, built for your real week. The routine begins.' },
@@ -76,20 +76,9 @@ export default {
     { name: 'Adjustment', text: 'Your training is readjusted based on your feedback. Then the cycle starts again.' },
   ],
 
-  FORMATS: {
-    presencial: {
-      title: 'Right by your side.',
-      items: ['Form corrected on the spot, set by set.', 'Load and volume adjusted during the workout.', 'Ideal for beginners or anyone who needs technique.'],
-    },
-    online: {
-      title: 'Training on your phone.',
-      items: ['A plan built for where you train.', 'Follow-up by video and message.', 'Ideal for busy schedules or training far away.'],
-    },
-  },
-
   FAQ: [
     ['Do I need experience?', 'No. The assessment sets your starting point, whether it is your first workout or a comeback after time off.'],
-    ['In person or online, which one?', 'It depends on your routine and how much live correction you need. We decide together in the assessment.'],
+    ['Online or in person, which one?', 'It depends on your routine and how much live correction you need. We decide together in the assessment.'],
     ['Does it work for cyclists or runners?', 'Yes. Strength and conditioning are built around your outdoor training, so one does not get in the way of the other.'],
     ['What if I have an injury or health issue?', 'Tell me in the assessment. Your training respects your history and, when it makes sense, is aligned with your doctor.'],
     ['What happens after I sign up?', 'You fill out the health form, we review everything on a video call and training begins. After that, your feedback adjusts every cycle.'],
@@ -112,7 +101,7 @@ export default {
     quadriceps: 'Quads', posteriores: 'Hamstrings', gluteos: 'Glutes', panturrilhas: 'Calves', abdomen: 'Abs',
   },
 
-  FORMAT_CHOICES: ['In person', 'Online', 'Not sure yet'],
+  FORMAT_CHOICES: ['Online', 'In person', 'Not sure yet'],
 
   UI: {
     hero: {
@@ -142,7 +131,7 @@ export default {
     calc: {
       tabsLabel: 'Training calculators',
       tabs: ['Sets per muscle', 'Session volume', 'Weekly volume', '2400 m test', 'HIIT'],
-      hints: ['The simplest way', 'Sets × reps × load', 'The whole week in kg', 'Running pace and intervals', 'From your Time Limit'],
+      hints: ['The simplest way', 'Sets × reps × load', 'The whole week in kg', 'Running pace and intervals', ''],
       muscleIntro: 'How many working sets do you do per week for each muscle? Warm-up sets do not count.',
       range: (a, b) => `Range: ${a}–${b} sets`,
       status: { low: 'Below', ok: 'In range', high: 'Above' },
@@ -158,7 +147,7 @@ export default {
       fields: { sets: 'Sets per exercise', reps: 'Reps per set', kg: 'Average load (kg)', ex: 'Number of exercises', freq: 'Workouts per week' },
       short: { sets: 'sets', reps: 'reps', ex: 'exercises', freq: 'workouts' },
       weekTotal: 'Weekly volume',
-      runIntro: 'Run 2400 m at your best pace, on a flat route or a track, and enter your time.',
+      runIntro: 'Run at your best pace: do the 2400 m test as fast as you can and enter your results below.',
       minutes: 'Minutes', seconds: 'Seconds',
       runHow: 'Your pace is the time divided by 2.4 km. The intervals come from the same time: the shorter the interval, the faster it is.',
       runPace: 'Your 2400 m pace',
@@ -167,9 +156,9 @@ export default {
       splitsTitle: 'Interval target times',
       between: (a, b) => `${a} to ${b}`,
       splitsHow: 'Base for each interval: your 2400 m time ÷ 6 (400 m), ÷ 3 (800 m) and ÷ 2 (1200 m). The target is 70–75%, 80–85% and 90–95% of that base.',
-      hiitIntro: 'With your vVO2max and Time Limit test results, build the session: the total interval time is about 3 times your Time Limit.',
+      hiitIntro: 'Get in touch so we can assess your vVO₂max and Time Limit and prescribe a HIIT made for your fitness.',
       hiitFields: { vmax: 'vVO2max (km/h)', tlim: 'Time Limit (min)', work: 'Interval (seconds)', ratio: 'Recovery : effort', warm: 'Warm-up (min)' },
-      hiitHow: 'Time Limit is how long you can keep running at your vVO2max. Both tests are done in the assessment.',
+      hiitHow: 'Time Limit is how long you can keep running at your vVO₂max. The total interval time is about 3 times your Time Limit.',
       hiitLabel: 'Your HIIT session',
       hiitReps: (n) => (n === 1 ? 'interval' : 'intervals'),
       hiitRows: { work: 'Each interval', rest: 'Rest between intervals', dist: 'Distance per interval', effort: 'Total interval time', total: 'Session with warm-up' },
@@ -197,8 +186,10 @@ export default {
       postHabitos: 'Instagram post (in Portuguese): your body reflects your habits. What is it saying about you today?',
       pedalAlt: 'Marcus Thomaz cycling on a road',
       subidaAlt: 'Marcus Thomaz riding his bike up a hill',
-      logoAlt: 'Marcus Thomaz, personal trainer',
-      askPre: 'Do you really', ask: 'Train?', askSub: 'Get to know your training variables.',
+      academiaAlt: 'Marcus Thomaz sweating on a stationary bike, in black and white',
+      askPre: 'Do you really', ask: 'Train?',
+      meetPre: 'Coach Marcus Thomaz', meet: 'Meet Marcus',
+      watch: 'Watch on Instagram',
       promise: 'Committed to your results.',
       reel: 'Strength on the climb', reelTag: 'Reel',
       reelAlt: 'Video: Marcus Thomaz riding a mountain bike up a trail',
@@ -215,7 +206,7 @@ export default {
       daysCount: (n) => `${n} ${n === 1 ? 'day' : 'days'} a week.`,
       daysEmpty: 'Tap the days you can train.',
       next: 'Continue',
-      format: 'In person or online?',
+      format: 'Online or in person?',
       name: 'What should I call you?',
       nameLabel: 'Your name', namePh: 'Your first name',
       noteLabel: 'Anything else you’d like to share?', optional: '(optional)', notePh: 'Injuries, routine, a race you want to do...',
@@ -238,8 +229,8 @@ export default {
   /* textos fixos do index.html: português → inglês */
   STATIC: {
     'Marcus Thomaz | Personal Trainer, treino sem atalhos': 'Marcus Thomaz | Personal Trainer, training without shortcuts',
-    'Marcus Thomaz, personal trainer. Saúde e bem-estar, comportamento, emagrecimento e hipertrofia, com disciplina, seriedade e compromisso com o seu resultado. Presencial e online.':
-      'Marcus Thomaz, personal trainer. Health and well-being, behavior, weight loss and muscle growth, with discipline, seriousness and commitment to your results. In person and online.',
+    'Marcus Thomaz, personal trainer. Saúde e bem-estar, comportamento, emagrecimento e hipertrofia, com disciplina, seriedade e compromisso com o seu resultado. Online e presencial.':
+      'Marcus Thomaz, personal trainer. Health and well-being, behavior, weight loss and muscle growth, with discipline, seriousness and commitment to your results. Online and in person.',
     'Treino sem atalhos. Disciplina, seriedade e compromisso com o seu resultado.': 'Training without shortcuts. Discipline, seriousness and commitment to your results.',
     'Pular para o conteúdo': 'Skip to content',
     'Marcus Thomaz, início': 'Marcus Thomaz, home',
@@ -253,16 +244,16 @@ export default {
     '← Voltar ao site': '← Back to the website',
     'Falar com o Marcus': 'Talk to Marcus',
     'Planos e valores | Marcus Thomaz, personal trainer': 'Plans and pricing | Marcus Thomaz, personal trainer',
-    'Planos do Marcus Thomaz: personal presencial ou on-line, small group e consultoria com ou sem nutrição. Valores, condições e contratação pelo WhatsApp.':
+    'Planos do Marcus Thomaz: personal online ou presencial, small group e consultoria com ou sem nutrição. Valores, condições e contratação pelo WhatsApp.':
       'Marcus Thomaz plans: in-person or online personal training, small group and remote coaching with or without nutrition. Prices, terms and sign-up on WhatsApp.',
     'Planos e valores | Marcus Thomaz': 'Plans and pricing | Marcus Thomaz',
-    'Personal presencial ou on-line, small group e consultoria. Monte o seu plano e contrate pelo WhatsApp.':
+    'Personal online ou presencial, small group e consultoria. Monte o seu plano e contrate pelo WhatsApp.':
       'In-person or online personal training, small group and remote coaching. Build your plan and sign up on WhatsApp.',
     'Calculadora': 'Calculator',
     'Calculadoras de treino': 'Training calculators',
     'Quanto você treina de verdade?': 'How much do you really train?',
-    'Volume da musculação, ritmo de corrida e HIIT: escolha uma calculadora e veja a conta acontecer, do jeito que o Marcus faz com os alunos.':
-      'Weight training volume, running pace and HIIT: pick a calculator and watch the math happen, the way Marcus does it with his clients.',
+    'Volume da musculação, ritmo de corrida e HIIT: escolha uma calculadora e veja a conta acontecer. Nos procure para ajustar sua rotina.':
+      'Weight training volume, running pace and HIIT: pick a calculator and watch the math happen. Reach out and we will adjust your routine.',
     'Como funciona': 'How it works',
     'Perguntas': 'Questions',
     'Pedir avaliação': 'Request an assessment',
@@ -270,16 +261,14 @@ export default {
     'Chamar no WhatsApp': 'Message on WhatsApp',
     'Treino sem atalhos.': 'Train without shortcuts.',
     'Semana 1': 'Week 1',
-    'Disciplina, seriedade e um compromisso: o seu resultado. Eu prescrevo, acompanho e ajusto o seu treino, presencial ou online.':
-      'Discipline, seriousness and one commitment: your results. I prescribe, follow and adjust your training, in person or online.',
+    'Disciplina, seriedade e um compromisso: o seu resultado. Eu prescrevo, acompanho e ajusto o seu treino, online ou presencial.':
+      'Discipline, seriousness and one commitment: your results. I prescribe, follow and adjust your training, online or in person.',
     'Ver como funciona': 'See how it works',
     'Role': 'Scroll',
     'Roda de bicicleta com as letras MT no centro': 'Bicycle wheel with the letters MT in the center',
     'Treina o que prescreve': 'Trains what he prescribes',
-    'Marcus Thomaz é personal trainer e vive o que ensina, da musculação ao pedal. Trabalha com autenticidade, disciplina e seriedade, e se compromete com uma coisa só: o seu resultado. Disciplina não é frase de efeito, é o que se repete toda semana.':
-      'Marcus Thomaz is a personal trainer who lives what he teaches, from the weight room to the bike. He works with authenticity, discipline and seriousness, and commits to one thing only: your results. Discipline is not a catchphrase, it is what you repeat every week.',
-    'Como você prefere treinar?': 'How do you prefer to train?',
-    'Formato do treino': 'Training format',
+    'Marcus Thomaz é personal trainer que vive o que ensina, da musculação ao pedal. Autenticidade, seriedade e um único compromisso: o seu resultado.':
+      'Marcus Thomaz is a personal trainer who lives what he teaches, from the weight room to the bike. Authenticity, seriousness and one single commitment: your results.',
     'Presencial': 'In person',
     'Por que': 'Why',
     'treinar?': 'train?',
@@ -312,7 +301,7 @@ export default {
     'Responda quatro perguntas rápidas, veja uma semana de exemplo e a mensagem já abre no WhatsApp do Marcus. É só enviar.':
       'Answer four quick questions, see a sample week and the message opens straight in Marcus’s WhatsApp. Just hit send.',
     'Atendimento': 'Sessions',
-    'Presencial e online': 'In person and online',
+    'Online e presencial': 'Online and in person',
     'Voltar': 'Back',
     '© 2026 Marcus Thomaz, personal trainer': '© 2026 Marcus Thomaz, personal trainer',
     'Voltar ao topo ↑': 'Back to top ↑',

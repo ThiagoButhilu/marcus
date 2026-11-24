@@ -214,7 +214,7 @@ export function initCalculator() {
   tabs.setAttribute('aria-label', T.tabsLabel)
   tabs.innerHTML = T.tabs.map((t, i) => `
     <button type="button" role="tab" id="calc-tab-${i}" class="calc-tab" aria-controls="calc-panel" aria-selected="${i === state.tab}" tabindex="${i === state.tab ? 0 : -1}" data-tab="${i}">
-      <span class="block">${t}</span><span class="block text-[0.8rem] font-medium opacity-70">${T.hints[i]}</span>
+      <span class="block">${t}</span>${T.hints[i] ? `<span class="block text-[0.8rem] font-medium opacity-70">${T.hints[i]}</span>` : ''}
     </button>`).join('')
 
   const refresh = () => {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Marcus Thomaz | Personal Trainer, treino sem atalhos</title>
-    <meta name="description" content="Marcus Thomaz, personal trainer. Saúde e bem-estar, comportamento, emagrecimento e hipertrofia, com disciplina, seriedade e compromisso com o seu resultado. Presencial e online." />
+    <meta name="description" content="Marcus Thomaz, personal trainer. Saúde e bem-estar, comportamento, emagrecimento e hipertrofia, com disciplina, seriedade e compromisso com o seu resultado. Online e presencial." />
     <meta name="theme-color" content="#000000" />
     <meta property="og:title" content="Marcus Thomaz | Personal Trainer" />
     <meta property="og:description" content="Treino sem atalhos. Disciplina, seriedade e compromisso com o seu resultado." />
@@ -50,8 +50,8 @@
     </header>
 
     <!-- menu mobile -->
-    <div id="menu" class="tone-dark invisible fixed inset-0 z-30 flex flex-col justify-between bg-tinta px-4 pb-8 pt-28 text-gelo" style="clip-path: circle(0px at calc(100% - 3rem) 2.6rem)" aria-hidden="true">
-      <nav class="flex flex-col gap-1" aria-label="Menu">
+    <div id="menu" class="tone-dark invisible fixed inset-0 z-30 flex flex-col justify-between gap-6 overflow-y-auto bg-tinta px-4 pb-8 pt-24 text-gelo" style="clip-path: circle(0px at calc(100% - 3rem) 2.6rem)" aria-hidden="true">
+      <nav class="menu-list" aria-label="Menu">
         <a class="menu-link" href="#marcus">Marcus</a>
         <a class="menu-link" href="#mitos">Por que treinar</a>
         <a class="menu-link" href="#variaveis">Variáveis</a>
@@ -59,7 +59,7 @@
         <a class="menu-link" href="#treinos">Pilares</a>
         <a class="menu-link" href="#metodo">Como funciona</a>
         <a class="menu-link" href="#faq">Perguntas</a>
-        <a class="menu-link" href="planos.html">Planos</a>
+        <a class="menu-link menu-cta" href="planos.html">Planos</a>
       </nav>
       <a id="menu-wa" class="btn btn-hot self-start" href="#" target="_blank" rel="noopener">Chamar no WhatsApp <i data-arr></i></a>
     </div>
@@ -84,7 +84,7 @@
               <div id="rider-tag" class="pointer-events-none absolute left-0 top-0 whitespace-nowrap sub rounded-full bg-bruma px-3 pb-1 pt-1.5 text-[0.85rem] text-tinta" aria-hidden="true">Semana 1</div>
             </div>
             <div id="hero-copy" class="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <p class="max-w-[34rem] text-[1.05rem] leading-snug md:text-[1.3rem]">Disciplina, seriedade e um compromisso: o seu resultado. Eu prescrevo, acompanho e ajusto o seu treino, presencial ou online.</p>
+              <p class="max-w-[34rem] text-[1.05rem] leading-snug md:text-[1.3rem]">Disciplina, seriedade e um compromisso: o seu resultado. Eu prescrevo, acompanho e ajusto o seu treino, online ou presencial.</p>
               <div class="flex flex-wrap gap-2">
                 <a id="hero-wa" class="btn btn-hot" href="#" target="_blank" rel="noopener">Pedir avaliação <i data-arr></i></a>
                 <a class="btn btn-line max-sm:hidden" href="#metodo">Ver como funciona</a>
@@ -99,7 +99,7 @@
         </div>
       </section>
 
-      <!-- quem: marcus + formato -->
+      <!-- quem: marcus -->
       <section id="marcus" data-nav="dark" class="tone-dark bg-petroleo px-4 py-24 text-gelo md:px-8 md:py-40">
         <div class="mx-auto grid max-w-[96rem] items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <div class="mx-auto w-full max-w-[34rem]">
@@ -107,17 +107,8 @@
           </div>
           <div>
             <h2 class="display text-[clamp(3.2rem,8.6vw,7.4rem)]">Treina o que prescreve</h2>
-            <p class="mt-6 max-w-[34rem] text-lg leading-relaxed opacity-85">Marcus Thomaz é personal trainer e vive o que ensina, da musculação ao pedal. Trabalha com autenticidade, disciplina e seriedade, e se compromete com uma coisa só: o seu resultado. Disciplina não é frase de efeito, é o que se repete toda semana.</p>
+            <p class="mt-6 max-w-[34rem] text-lg leading-relaxed opacity-85">Marcus Thomaz é personal trainer que vive o que ensina, da musculação ao pedal. Autenticidade, seriedade e um único compromisso: o seu resultado.</p>
 
-            <div class="mt-12">
-              <p class="text-[0.95rem] font-medium opacity-70">Como você prefere treinar?</p>
-              <div class="seg mt-3" role="tablist" aria-label="Formato do treino">
-                <span id="seg-ind" class="seg-ind" aria-hidden="true"></span>
-                <button type="button" role="tab" id="tab-presencial" aria-selected="true" aria-controls="format-panel" data-k="presencial">Presencial</button>
-                <button type="button" role="tab" id="tab-online" aria-selected="false" aria-controls="format-panel" data-k="online" tabindex="-1">Online</button>
-              </div>
-              <div id="format-panel" role="tabpanel" aria-labelledby="tab-presencial" class="mt-8 min-h-[13rem]"></div>
-            </div>
           </div>
         </div>
       </section>
@@ -179,7 +170,7 @@
         <div class="mx-auto max-w-[96rem]">
           <p class="sub mb-4 text-[1.05rem] opacity-70">Calculadoras de treino</p>
           <h2 class="display max-w-[14ch] text-[clamp(3.2rem,9vw,8rem)]">Quanto você treina de verdade?</h2>
-          <p class="mt-6 max-w-[36rem] text-lg leading-relaxed opacity-85">Volume da musculação, ritmo de corrida e HIIT: escolha uma calculadora e veja a conta acontecer, do jeito que o Marcus faz com os alunos.</p>
+          <p class="mt-6 max-w-[36rem] text-lg leading-relaxed opacity-85">Volume da musculação, ritmo de corrida e HIIT: escolha uma calculadora e veja a conta acontecer. Nos procure para ajustar sua rotina.</p>
 
           <div id="calc-tabs" role="tablist" class="mt-10 flex flex-wrap gap-2"></div>
           <div id="calc-panel" role="tabpanel" class="mt-5 grid grid-cols-[minmax(0,1fr)] gap-4 rounded-[2rem] bg-gelo p-4 text-tinta md:p-6 lg:grid-cols-[1.3fr_1fr] lg:items-start">
@@ -258,7 +249,7 @@
               </div>
               <div>
                 <dt class="text-sm opacity-70">Atendimento</dt>
-                <dd class="text-xl font-semibold">Presencial e online</dd>
+                <dd class="text-xl font-semibold">Online e presencial</dd>
               </div>
               <div>
                 <dt class="text-sm opacity-70">Planos e valores</dt>

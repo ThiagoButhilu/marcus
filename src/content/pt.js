@@ -15,11 +15,11 @@ export default {
 
   /* "por quê": na frente, o que a pessoa vive hoje; atrás, o que o condicionamento muda (um por pilar) */
   REASONS: [
-    { now: 'Perder o fôlego no primeiro lance de escada.', gain: 'Condicionamento é o que faz o dia pesar menos. Fôlego, disposição e sono melhor são saúde que você sente.' },
-    { now: 'Começar na segunda e parar na quinta.', gain: 'Constância se constrói. Com rotina organizada e acompanhamento, o hábito fica e a força de vontade deixa de ser o plano.' },
+    { now: 'Perder o fôlego no primeiro lance de escada.', gain: 'A boa aptidão física não apenas transforma a sua disposição para os desafios de hoje — ela é o alicerce da sua independência no futuro.' },
+    { now: 'Começar na segunda e parar na quinta.', gain: 'O hábito não te muda no dia em que você o cria. Ele te muda no dia em que te segura e te mostra aonde pode te levar.' },
     { now: 'Pagar academia que você não usa.', gain: 'Treino bem prescrito não desperdiça tempo nem dinheiro. E cuidar do corpo hoje é prevenção para amanhã.' },
-    { now: 'Fazer dieta e ver o peso voltar.', gain: 'Emagrecer treinando preserva músculo. O resultado dura porque o corpo muda junto, não só o prato.' },
-    { now: 'Treinar há meses e o corpo não mudar.', gain: 'Hipertrofia pede carga que progride, volume certo e descanso. Sem plano, é só repetição.' },
+    { now: '“Emagrecendo”, mas com perda de massa muscular.', gain: 'Dietas com baixa caloria e uso de inibidores de apetite, associadas ao treino de musculação, tendem a reduzir significativamente o risco de perda de massa muscular.' },
+    { now: 'Treinar há meses e o corpo não mudar.', gain: 'Hipertrofia pede progressão de carga, estímulo e adaptação. Volume, intensidade e descanso ajustados para otimizar seus ganhos.' },
   ],
 
   /* faders da seção "variáveis", pelo id */
@@ -53,9 +53,9 @@ export default {
     },
     economico: {
       alt: 'Marcus Thomaz pedalando numa estrada rural',
-      title: 'Econômico', line: 'Resultado sem desperdício.',
+      title: 'Econômico', line: 'Para produzir mais: menos remédio e hospital, mais vigor físico.',
       text: 'Cada sessão tem propósito: nada de pagar por treino aleatório ou perder tempo na academia. O plano é feito para o seu local, o seu equipamento e o formato que cabe na sua rotina.',
-      tags: ['Custo-benefício', 'Tempo bem usado', 'Presencial ou online'],
+      tags: ['Custo-benefício', 'Tempo bem usado', 'Online ou presencial'],
     },
     emagrecimento: {
       alt: 'Marcus Thomaz suado na bicicleta ergométrica da academia',
@@ -73,7 +73,7 @@ export default {
 
   /* "como": o processo em seis etapas; as fases e a volta do ciclo ficam em UI.method */
   STEPS: [
-    { name: 'Contratação', text: 'Você escolhe presencial ou online e confirma o plano.' },
+    { name: 'Contratação', text: 'Você escolhe online ou presencial e confirma o plano.' },
     { name: 'Anamnese', text: 'Um formulário interativo sobre objetivo, histórico e rotina. Você já aprende enquanto responde.' },
     { name: 'Videochamada', text: 'Revisamos juntos a sua anamnese, com apontamentos e recomendações.' },
     { name: 'Primeiro treino', text: 'O treino montado para a sua semana real. A rotina começa.' },
@@ -81,20 +81,9 @@ export default {
     { name: 'Ajuste', text: 'Com o seu feedback, o treino é reajustado. E o ciclo recomeça.' },
   ],
 
-  FORMATS: {
-    presencial: {
-      title: 'Eu do seu lado.',
-      items: ['Execução corrigida na hora, série por série.', 'Carga e volume ajustados durante o treino.', 'Ideal para começar ou para quem precisa de técnica.'],
-    },
-    online: {
-      title: 'Treino no seu celular.',
-      items: ['Plano montado para o seu local de treino.', 'Acompanhamento por vídeo e mensagem.', 'Ideal para agenda corrida ou para quem treina longe.'],
-    },
-  },
-
   FAQ: [
     ['Preciso ter experiência?', 'Não. A avaliação define o ponto de partida, seja o seu primeiro treino ou a volta depois de um tempo parado.'],
-    ['Presencial ou online, qual escolher?', 'Depende da sua rotina e de quanta correção ao vivo você precisa. Na avaliação a gente decide junto.'],
+    ['Online ou presencial, qual escolher?', 'Depende da sua rotina e de quanta correção ao vivo você precisa. Na avaliação a gente decide junto.'],
     ['Serve para quem pedala ou corre?', 'Serve. A musculação e o condicionamento entram em volta do seu treino de rua, sem um atrapalhar o outro.'],
     ['E se eu tiver lesão ou problema de saúde?', 'Conte na avaliação. O treino respeita o seu histórico e, quando fizer sentido, é alinhado com o seu médico.'],
     ['O que acontece depois que eu contrato?', 'Você preenche a anamnese, a gente revisa tudo numa videochamada e o treino começa. Depois, o seu feedback ajusta cada ciclo.'],
@@ -119,7 +108,7 @@ export default {
     quadriceps: 'Quadríceps', posteriores: 'Posteriores de coxa', gluteos: 'Glúteos', panturrilhas: 'Panturrilhas', abdomen: 'Abdômen',
   },
 
-  FORMAT_CHOICES: ['Presencial', 'Online', 'Ainda não sei'],
+  FORMAT_CHOICES: ['Online', 'Presencial', 'Ainda não sei'],
 
   /* textos que os scripts escrevem na página */
   UI: {
@@ -150,7 +139,7 @@ export default {
     calc: {
       tabsLabel: 'Calculadoras de treino',
       tabs: ['Séries por músculo', 'Volume da sessão', 'Volume da semana', 'Teste de 2400 m', 'HIIT'],
-      hints: ['O jeito mais simples', 'Séries × reps × carga', 'A semana inteira em kg', 'Ritmo e tiros de corrida', 'Pelo seu Tempo Limite'],
+      hints: ['O jeito mais simples', 'Séries × reps × carga', 'A semana inteira em kg', 'Ritmo e tiros de corrida', ''],
       muscleIntro: 'Quantas séries de trabalho você faz por semana para cada músculo? Aquecimento não conta.',
       range: (a, b) => `Faixa: ${a}–${b} séries`,
       status: { low: 'Abaixo', ok: 'Na faixa', high: 'Acima' },
@@ -166,7 +155,7 @@ export default {
       fields: { sets: 'Séries por exercício', reps: 'Repetições por série', kg: 'Carga média (kg)', ex: 'Número de exercícios', freq: 'Treinos por semana' },
       short: { sets: 'séries', reps: 'reps', ex: 'exercícios', freq: 'treinos' },
       weekTotal: 'Volume da semana',
-      runIntro: 'Corra 2400 m no seu melhor ritmo, num percurso plano ou na pista, e digite o tempo.',
+      runIntro: 'Corra no seu melhor pace: realize o teste de 2400 m no menor tempo possível e insira os dados abaixo.',
       minutes: 'Minutos', seconds: 'Segundos',
       runHow: 'O ritmo é o tempo dividido por 2,4 km. Os tiros saem do mesmo tempo: quanto mais curto o tiro, mais rápido ele é.',
       runPace: 'Seu ritmo nos 2400 m',
@@ -175,9 +164,9 @@ export default {
       splitsTitle: 'Tempo-alvo dos tiros',
       between: (a, b) => `${a} a ${b}`,
       splitsHow: 'Base de cada tiro: o tempo dos 2400 m ÷ 6 (400 m), ÷ 3 (800 m) e ÷ 2 (1200 m). O alvo é 70–75%, 80–85% e 90–95% dessa base.',
-      hiitIntro: 'Com os resultados do teste de iVO2máx e do teste de Tempo Limite, monte a sessão: o tempo total de tiros é cerca de 3 vezes o seu Tempo Limite.',
+      hiitIntro: 'Entre em contato para avaliarmos o seu iVO₂máx e o seu Tempo Limite, e prescrevermos um HIIT sob medida para o seu condicionamento.',
       hiitFields: { vmax: 'iVO2máx (km/h)', tlim: 'Tempo Limite (min)', work: 'Tiro (segundos)', ratio: 'Recuperação : esforço', warm: 'Aquecimento (min)' },
-      hiitHow: 'Tempo Limite é quanto tempo você aguenta correndo na sua iVO2máx. Os dois testes são feitos na avaliação.',
+      hiitHow: 'Tempo Limite é quanto tempo você aguenta correndo na sua iVO₂máx. O tempo total de tiros é cerca de 3 vezes o seu Tempo Limite.',
       hiitLabel: 'Sua sessão de HIIT',
       hiitReps: (n) => (n === 1 ? 'tiro' : 'tiros'),
       hiitRows: { work: 'Cada tiro', rest: 'Descanso entre tiros', dist: 'Distância por tiro', effort: 'Tempo total de tiros', total: 'Sessão com aquecimento' },
@@ -205,8 +194,10 @@ export default {
       postHabitos: 'Post do Instagram: seu corpo é o reflexo dos seus hábitos. O que ele está dizendo sobre você hoje?',
       pedalAlt: 'Marcus Thomaz pedalando numa estrada',
       subidaAlt: 'Marcus Thomaz subindo uma ladeira de bicicleta',
-      logoAlt: 'Marcus Thomaz, personal trainer',
-      askPre: 'Será que você', ask: 'Treina?', askSub: 'Conheça as variáveis do seu treino.',
+      academiaAlt: 'Marcus Thomaz suado na bicicleta ergométrica, em preto e branco',
+      askPre: 'Será que você', ask: 'Treina?',
+      meetPre: 'Professor Marcus Thomaz', meet: 'Prazer, Marcus',
+      watch: 'Assistir no Instagram',
       promise: 'Compromisso com o seu resultado.',
       reel: 'Força na ladeira', reelTag: 'Reel',
       reelAlt: 'Vídeo: Marcus Thomaz subindo uma trilha de mountain bike',
@@ -223,7 +214,7 @@ export default {
       daysCount: (n) => `${n} ${n === 1 ? 'dia' : 'dias'} por semana.`,
       daysEmpty: 'Toque nos dias em que você consegue treinar.',
       next: 'Continuar',
-      format: 'Presencial ou online?',
+      format: 'Online ou presencial?',
       name: 'Como posso te chamar?',
       nameLabel: 'Seu nome', namePh: 'Seu primeiro nome',
       noteLabel: 'Quer contar mais alguma coisa?', optional: '(opcional)', notePh: 'Lesões, rotina, prova que quer fazer...',

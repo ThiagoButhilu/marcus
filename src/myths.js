@@ -10,7 +10,7 @@ export function initMyths() {
       <span class="flip-in">
         <span class="flip-face flip-front">
           <span class="text-[0.95rem] font-semibold opacity-60">${UI.reasons.now}</span>
-          <span class="display block text-[clamp(2.2rem,8.4vw,3rem)]"><span class="strike-line">${m.now}</span></span>
+          <span class="display block ${m.now.length > 40 ? 'text-[clamp(1.8rem,6.6vw,2.4rem)]' : 'text-[clamp(2.2rem,8.4vw,3rem)]'}"><span class="strike-line">${m.now}</span></span>
           <span class="text-[0.95rem] font-semibold">${UI.reasons.flip}</span>
         </span>
         <span class="flip-face flip-back" aria-hidden="true">

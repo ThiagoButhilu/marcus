@@ -6,7 +6,7 @@ export default {
   hero: {
     eyebrow: 'Planos e investimento',
     title: 'Escolha como treinar com o Marcus',
-    text: 'Personal presencial ou on-line, treino em grupo reduzido ou consultoria. Monte o seu plano, veja o valor e contrate pelo WhatsApp.',
+    text: 'Personal online ou presencial, treino em grupo reduzido ou consultoria. Monte o seu plano, veja o valor e contrate pelo WhatsApp.',
     cred: 'Prof. Esp. Marcus Thomaz · CREF 5186/ES',
   },
 
@@ -27,7 +27,7 @@ export default {
     save: (p) => `${p}% a menos por mês`,
     includes: 'Inclui',
     cta: 'Contratar pelo WhatsApp',
-    payment: 'Pagamento via PIX ou cartão de crédito (Asaas), sempre antes do início das orientações.',
+    payment: 'Pagamento pela plataforma Asaas.',
     minPeople: 'Mínimo de 3 alunos, nos mesmos dias e horários.',
     msg: (plan, detail, price, pair) => `Olá, Marcus! Vim pela página de planos e quero contratar: ${plan}${detail ? `, ${detail}` : ''} (${price}).${pair ? ' Vou treinar em dupla.' : ''} Como seguimos?`,
   },
@@ -36,21 +36,21 @@ export default {
   groups: {
     A: {
       name: 'Personal Trainer', tag: 'Individual',
-      desc: 'Acompanhamento 100% exclusivo, presencial ou por videoconferência.',
-      items: { 'A.1': 'Presencial', 'A.2': 'Videoconferência' },
+      desc: 'Acompanhamento 100% exclusivo, por videoconferência ou presencial.',
+      items: { 'A.2': 'Videoconferência', 'A.1': 'Presencial' },
       includes: ['Avaliação inicial e reavaliação', 'Treino de força e aeróbio montado para você', 'Execução corrigida em cada sessão', 'Treino em dupla com 50% para o segundo aluno'],
     },
     B: {
       name: 'Small Group', tag: 'Grupo reduzido',
-      desc: 'Treino em grupo pequeno, de pelo menos 3 alunos, presencial ou on-line.',
-      items: { 'B.1': 'On-line, em casa', 'B.2': 'Presencial' },
+      desc: 'Treino em grupo pequeno, de pelo menos 3 alunos, online ou presencial.',
+      items: { 'B.1': 'Online, em casa', 'B.2': 'Presencial' },
       includes: ['Avaliação inicial e reavaliação', 'Treino em grupo de no mínimo 3 alunos', 'Mesmos dias e horários para o grupo'],
     },
     C: {
       name: 'Consultoria', tag: 'Digital',
       desc: 'Planejamento e suporte contínuo pelo aplicativo, no seu ritmo.',
       items: { 'C.1': 'Consultoria Personal Trainer' },
-      includes: ['Treino individual a partir da anamnese e da avaliação biomecânica', 'Aplicativo com vídeos e descrição de cada exercício', 'Plantão tira-dúvidas com resposta em até 6 horas'],
+      includes: ['Anamnese e análise por videoconferência (20 min)', 'Prescrição enviada e ajustada sempre que preciso', 'Canal de dúvidas pelo WhatsApp', 'Acompanhamento semanal da frequência'],
     },
     D: {
       name: 'Consultoria + Nutrição', tag: 'Completo',
@@ -80,25 +80,21 @@ export default {
       { n: 'II', name: 'Prescrição', text: 'Rotina de treino que combina estímulos aeróbios (corrida, ciclismo) e de força, com orientação e controle calórico.' },
       { n: 'III', name: 'Reavaliação', text: 'Comparação com os dados da Fase I e relatório de evolução física e metabólica.' },
     ],
-    partnersTitle: 'Parceiros indicados',
-    partners: [
-      { name: 'Dr. Rafael Altoé', role: 'Cardiologia · Cardiodiagnóstico Vila Velha', ig: 'drrafaelaltoe' },
-      { name: 'Dra. Amy Joy Foster', role: 'Nutrição esportiva', ig: 'amy_jf' },
-      { name: 'O Tal Natural', role: 'Refeições alinhadas à dieta (opcional)', ig: 'otalnatural' },
-    ],
+    partnersTitle: 'Profissionais parceiros',
+    partners: ['Cardiologista', 'Nutricionista esportiva'],
     goalsTitle: 'Objetivos do programa',
     goals: ['Pressão arterial, colesterol e glicemia sob controle', 'Menos gordura, mais massa magra', 'Mais fôlego (VO₂ máx.) e resistência', 'Reeducação alimentar sustentável'],
   },
 
   places: {
     eyebrow: 'Onde',
-    title: 'Presencial em Vitória ou on-line',
+    title: 'Online ou presencial em Vitória',
     list: [
+      { name: 'Videoconferência', area: 'De onde você estiver' },
       { name: 'Academia Wellness', area: 'Praia de Camburi' },
       { name: 'Academia Ponto 1', area: 'Praia do Canto' },
       { name: 'Academia Bodytech', area: 'Enseada do Suá' },
       { name: 'Academia Vitória Sports', area: 'Praia do Canto' },
-      { name: 'Videoconferência', area: 'De onde você estiver' },
     ],
   },
 
@@ -106,10 +102,8 @@ export default {
     eyebrow: 'Condições',
     title: 'Regras claras, do primeiro dia',
     blocks: [
-      { title: 'Pagamento', items: ['PIX ou cartão de crédito pela plataforma Asaas.', 'Mensalidade a cada 30 dias, paga antes do início das orientações.', 'Não há restituição de valores em nenhuma modalidade.'] },
-      { title: 'Prazos e reposição', items: ['O pacote vale por 30 dias corridos, com tolerância de até 5 dias para ausências justificadas.', 'Fora desse prazo não há reposição.', 'Atrasos não são compensados: a rotina do dia tem até 1 hora para ser concluída.'] },
-      { title: 'Agenda', items: ['Reagendamentos com no mínimo 24 horas de antecedência, conforme a agenda do personal.', 'Reajustes de valor podem acontecer com aviso prévio de no mínimo 30 dias.'] },
-      { title: 'Consultoria digital', items: ['Prescrição individual a partir de anamnese e avaliação biomecânica.', 'Aplicativo com vídeos de execução e descrição do treino.', 'Plantão tira-dúvidas com resposta em até 6 horas.'] },
+      { title: 'Pagamento', items: ['Pagamento pela plataforma Asaas.', 'Não há restituição de valores em nenhuma modalidade.'] },
+      { title: 'Consultoria digital', items: ['Anamnese.', 'Análise junto, por videoconferência (20 min).', 'Envio da prescrição.', 'Canal de dúvidas pelo WhatsApp.', 'Acompanhamento semanal da frequência.', 'Formulário para alteração da prescrição.', 'Envio da nova prescrição.'] },
     ],
   },
 

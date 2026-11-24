@@ -61,6 +61,7 @@ Ambas foram cortadas em 23,5 s, a 15 quadros por segundo, sem áudio, com duoton
 Com movimento reduzido ou economia de dados ativada, fica só o pôster.
 
 Os pilares usam fotos do Marcus (`src/assets/pilar-*.webp`); o ponto da foto que fica sempre à vista é o `pos` de cada pilar em `src/data.js`.
+Os cartões de reel do baralho levam para os vídeos no Instagram (links em `REELS`, em `src/data.js`).
 O baralho do Instagram tem também o vídeo "Força na ladeira" (`reel-ladeira.mp4`, mudo, em loop enquanto está na tela) e as fotos `foto-pb.webp` e `foto-costas.webp`.
 A fonte de corpo é Glacial Indifference; como ela não está no Google Fonts, o site usa Jost quando ela não está instalada.
 

@@ -1,11 +1,11 @@
 import { $, $$, reduced } from './lib.js'
-import { SITE } from './data.js'
+import { SITE, REELS } from './data.js'
 import { UI } from './i18n.js'
 import postSaude from './assets/post-saude-desculpas.webp'
 import postEnergia from './assets/post-energia.webp'
 import postHabitos from './assets/post-habitos.webp'
-import logoClaro from './assets/logo-claro.png'
 import fotoPedal from './assets/foto-pedal.webp'
+import fotoAcademia from './assets/foto-academia.webp'
 import fotoSubida from './assets/foto-subida.webp'
 import fotoPb from './assets/foto-pb.webp'
 import fotoCostas from './assets/foto-costas.webp'
@@ -13,12 +13,22 @@ import reelLadeira from './assets/reel-ladeira.mp4'
 import reelPoster from './assets/reel-ladeira.jpg'
 
 /*
-  Baralho: posts do perfil (os banners do mídia kit) intercalados com fotos e um vídeo do Marcus.
+  Baralho: posts do perfil (os banners do mídia kit) intercalados com fotos e vídeos do Marcus.
+  Os cartões de reel levam para o vídeo no Instagram (links em REELS, em data.js).
   Arraste o cartão de cima para o lado e ele vai para o fim do baralho.
   O vídeo toca mudo, em loop, só enquanto o baralho está na tela (com movimento reduzido, fica parado).
   Para trocar um post, coloque a imagem 4:5 em src/assets e importe aqui.
 */
 const post = (src, alt) => `<img src="${src}" alt="${alt}" class="size-full object-cover" draggable="false" />`
+/* cartão de reel: foto de capa, título e botão que abre o vídeo no Instagram */
+const reelCard = (src, alt, pre, title, url) => `<div class="relative h-full bg-tinta text-gelo">
+     <img src="${src}" alt="${alt}" class="absolute inset-0 size-full object-cover" draggable="false" />
+     <div class="absolute inset-0 flex flex-col justify-end gap-[3cqw] bg-gradient-to-t from-tinta/85 via-tinta/30 to-transparent p-[7cqw]">
+       <p class="sub text-[5.6cqw] opacity-85">${pre}</p>
+       <p class="display text-[15cqw]">${title}</p>
+       <a class="sub self-start rounded-full bg-gelo px-[4.4cqw] pb-[2cqw] pt-[2.6cqw] text-[4.6cqw] text-tinta" href="${url}" target="_blank" rel="noopener" draggable="false">▶ ${UI.deck.watch}</a>
+     </div>
+   </div>`
 
 const TILES = [
   post(postSaude, UI.deck.postSaude),
@@ -29,23 +39,16 @@ const TILES = [
        <p class="display text-[12cqw]">${UI.deck.reel}</p>
      </div>
    </div>`,
-  `<div class="relative h-full bg-tinta text-gelo">
-     <img src="${fotoPedal}" alt="${UI.deck.pedalAlt}" class="absolute inset-0 size-full object-cover" draggable="false" />
-     <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-tinta/85 via-tinta/30 to-transparent p-[7cqw]">
-       <p class="sub text-[5.6cqw] opacity-85">${UI.deck.askPre}</p>
-       <p class="display text-[18cqw]">${UI.deck.ask}</p>
-       <p class="mt-[2cqw] text-[5.2cqw] opacity-85">${UI.deck.askSub}</p>
-     </div>
-   </div>`,
+  reelCard(fotoAcademia, UI.deck.academiaAlt, UI.deck.askPre, UI.deck.ask, REELS.treina),
+  reelCard(fotoPedal, UI.deck.pedalAlt, UI.deck.meetPre, UI.deck.meet, REELS.apresentacao),
   post(postEnergia, UI.deck.postEnergia),
   post(fotoPb, UI.deck.pbAlt),
   post(postHabitos, UI.deck.postHabitos),
   post(fotoCostas, UI.deck.costasAlt),
   `<div class="relative h-full bg-petroleo text-gelo">
      <img src="${fotoSubida}" alt="${UI.deck.subidaAlt}" class="absolute inset-0 size-full object-cover" draggable="false" />
-     <div class="absolute inset-0 flex flex-col gap-[6cqw] bg-gradient-to-b from-petroleo/90 via-petroleo/45 to-transparent p-[7cqw]">
-       <img src="${logoClaro}" alt="${UI.deck.logoAlt}" class="w-[48%]" draggable="false" />
-       <p class="display text-[11.5cqw]">${UI.deck.promise}</p>
+     <div class="absolute inset-x-0 top-0 bg-gradient-to-b from-petroleo/80 to-transparent p-[7cqw] pb-[16cqw]">
+       <p class="display max-w-[70%] text-[8cqw]">${UI.deck.promise}</p>
      </div>
    </div>`,
 ]
@@ -93,7 +96,7 @@ export function initDeck() {
   let drag = null
   host.addEventListener('pointerdown', (e) => {
     const card = e.target.closest('.deck-card')
-    if (!card || busy || card !== els[order[0]]) return
+    if (!card || busy || card !== els[order[0]] || e.target.closest('a')) return
     drag = { card, x: e.clientX, t: performance.now(), dx: 0 }
     card.classList.add('dragging')
     try { card.setPointerCapture(e.pointerId) } catch {}

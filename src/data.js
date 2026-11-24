@@ -19,7 +19,13 @@ export const SITE = {
   photo: 'marcus.webp',
 }
 
-export const { DAYS, REASONS, VERDICTS, STEPS, FORMATS, FAQ, GOALS, PLAN, FORMAT_CHOICES } = C
+/* reels do Instagram que aparecem no baralho */
+export const REELS = {
+  treina: 'https://www.instagram.com/reel/DfX8preBiPP/',
+  apresentacao: 'https://www.instagram.com/reel/De-NUmzg8Lm/',
+}
+
+export const { DAYS, REASONS, VERDICTS, STEPS, FAQ, GOALS, PLAN, FORMAT_CHOICES } = C
 
 /* faders da seção "variáveis" */
 export const VARS = [
@@ -81,7 +87,7 @@ export const PLANS = [
 */
 export const MODS = [
   { key: 'saude', bg: '#98b7ba', fg: '#000000', tone: 'light', photo: fotoSaude, pos: '48% 72%' },
-  { key: 'comportamental', bg: '#274c5f', fg: '#faf7f0', tone: 'dark', photo: fotoComportamental, pos: '50% 82%' },
+  { key: 'comportamental', bg: '#274c5f', fg: '#faf7f0', tone: 'dark', photo: fotoComportamental, pos: '50% 42%' },
   { key: 'economico', bg: '#bcc3c4', fg: '#000000', tone: 'light', photo: fotoEconomico, pos: '62% 60%' },
   { key: 'emagrecimento', bg: '#000000', fg: '#faf7f0', tone: 'dark', photo: fotoEmagrecimento, pos: '45% 40%' },
   { key: 'hipertrofia', bg: '#3a687b', fg: '#faf7f0', tone: 'dark', photo: fotoHipertrofia, pos: '42% 35%' },

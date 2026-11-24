@@ -19,7 +19,8 @@ const head = (eyebrow, title, text = '') => `
 const options = (plan) => Object.keys(plan.prices)
 const lowest = (plan) => Math.min(...Object.values(plan.prices))
 
-const state = { group: 'A', item: 'A.1', option: '12', pair: false }
+// começa no primeiro formato do personal (o on-line vem primeiro: é o foco do Marcus)
+const state = { group: 'A', item: Object.keys(P.groups.A.items)[0], option: '12', pair: false }
 
 /* botões de escolha (rádio); o grupo diz qual parte do estado eles mudam */
 const choice = (name, value, label, hint, on) => `
@@ -114,7 +115,7 @@ function initBuilder() {
 
 function initTable() {
   const T = P.table
-  const rows = (kind) => PLANS.filter((p) => p.kind === kind).flatMap((p) => Object.entries(P.groups[p.code].items).map(([code, label]) => `
+  const rows = (kind) => PLANS.filter((p) => p.kind === kind).flatMap((p) => Object.entries(P.groups[p.code].items).sort(([a], [b]) => a.localeCompare(b)).map(([code, label]) => `
     <tr class="border-t border-tinta/10">
       <th scope="row" class="py-3 pr-4 text-left font-semibold"><span class="sub mr-2 opacity-60">${code}</span>${P.groups[p.code].name}${Object.keys(P.groups[p.code].items).length > 1 ? ` · ${label}` : ''}</th>
       ${options(p).map((o) => `<td class="py-3 pl-4 text-right tabular-nums">${money(p.prices[o])}</td>`).join('')}
@@ -150,10 +151,7 @@ function initSections() {
     <div class="mt-10 grid gap-8 lg:grid-cols-2">
       <div>
         <p class="sub text-[1.05rem]">${F.partnersTitle}</p>
-        <ul class="mt-3 grid gap-2">${F.partners.map((p) => `
-          <li><a class="flex items-center justify-between gap-4 rounded-2xl bg-white/60 px-5 py-4 transition-colors hover:bg-white" href="https://www.instagram.com/${p.ig}/" target="_blank" rel="noopener">
-            <span><b class="block">${p.name}</b><span class="text-[0.92rem] opacity-70">${p.role}</span></span><span class="sub text-[0.9rem] opacity-70">@${p.ig}</span></a></li>`).join('')}
-        </ul>
+        <ul class="mt-3 grid gap-2">${F.partners.map((p) => `<li class="rounded-2xl bg-white/60 px-5 py-4 font-semibold">${p}</li>`).join('')}</ul>
       </div>
       <div>
         <p class="sub text-[1.05rem]">${F.goalsTitle}</p>
