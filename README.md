@@ -40,6 +40,21 @@ montador de plano com valor na hora e botão que abre o WhatsApp com o plano esc
 parceiros, locais e regras. Valores em `PLANS` (`src/data.js`); textos em `src/content/planos.pt.js` e `planos.en.js`.
 O `vite.config.js` gera as duas páginas na build. A landing leva para ela pelo menu, pela pergunta "Quanto custa?" e pela seção de contato.
 
+## Pagamento (Asaas)
+
+O site não processa pagamento: o botão "Pagar agora" da página de planos abre o Link de Pagamento do Asaas do plano escolhido.
+Os links ficam em `PAY_LINKS`, em `src/data.js`, um por formato e opção. Opção sem link continua com o botão do WhatsApp,
+então dá para ligar os links aos poucos. Small Group e treino em dupla vão sempre para o WhatsApp (turma e valor do segundo aluno são combinados antes).
+
+Links a criar no painel do Asaas (Cobranças → Link de pagamento), com o nome do código para identificar o plano:
+
+| Chave em `PAY_LINKS` | Plano | Valor |
+|---|---|---|
+| `A.2:8`, `A.2:10`, `A.2:12` | Personal Trainer por videoconferência, 8/10/12 sessões | R$ 920 / 1.150 / 1.380 |
+| `A.1:8`, `A.1:10`, `A.1:12` | Personal Trainer presencial, 8/10/12 sessões | R$ 920 / 1.150 / 1.380 |
+| `C.1:mensal`, `C.1:trimestral`, `C.1:anual` | Consultoria Personal Trainer | R$ 345 / 316 / 290 por mês |
+| `D.1:mensal`, `D.1:trimestral`, `D.1:anual` | Consultoria Físico + Nutricional | R$ 845 / 716 / 690 por mês |
+
 ## Idiomas
 
 O seletor PT | EN fica no topo. A escolha fica salva no navegador; `?lang=en` (ou `?lang=pt`) na URL força um idioma, bom para mandar o link.

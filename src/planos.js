@@ -1,7 +1,7 @@
 import './style.css'
 import { $, $$, waLink } from './lib.js'
 import { initI18n, C } from './i18n.js'
-import { PLANS } from './data.js'
+import { PLANS, PAY_LINKS } from './data.js'
 
 /*
   Página de planos: o montador (modalidade → detalhes → valor e botão de contratar),
@@ -59,6 +59,10 @@ function initBuilder() {
     const name = `${state.item} · ${g.name}${Object.keys(g.items).length > 1 ? ` (${g.items[state.item]})` : ''}`
     const detail = p.kind === 'pacote' ? P.sessionsLabel(state.option) : P.periods[state.option]
     const pair = p.pair && state.pair
+    const wa = waLink(B.msg(name, detail, p.kind === 'pacote' ? money(price) : `${money(price)} ${B.perMonth}`, pair))
+    // com link do Asaas, o botão principal leva ao pagamento; em dupla, o valor do segundo aluno é combinado no WhatsApp
+    const link = !pair && PAY_LINKS[`${state.item}:${state.option}`]
+    const pay = /^https:\/\//.test(link || '') ? link : ''
     return `
       <p class="sub text-[0.95rem] opacity-70">${name}</p>
       <p class="display mt-2 text-[clamp(2.8rem,6vw,4.4rem)] tabular-nums" aria-live="polite">${money(price)}</p>
@@ -66,8 +70,14 @@ function initBuilder() {
       ${pair ? `<p class="mt-3 rounded-2xl bg-white/10 px-4 py-3 text-[1rem]">${B.pairLine(money(price * p.pair), money(price * (1 + p.pair)))}</p>` : ''}
       <p class="sub mt-6 text-[0.95rem] opacity-70">${B.includes}</p>
       <ul class="mt-2 grid gap-2">${g.includes.map((i) => `<li class="flex gap-3 text-[1rem] leading-snug"><span class="mt-[0.5em] size-2 shrink-0 rounded-full bg-bruma" aria-hidden="true"></span>${i}</li>`).join('')}</ul>
-      <a class="btn btn-hot mt-7 !whitespace-normal" href="${waLink(B.msg(name, detail, p.kind === 'pacote' ? money(price) : `${money(price)} ${B.perMonth}`, pair))}" target="_blank" rel="noopener">${B.cta} ${ARROW}</a>
-      <p class="mt-4 text-[0.9rem] opacity-65">${B.payment}</p>`
+      ${pay
+        ? `<div class="mt-7 flex flex-wrap items-center gap-3">
+            <a class="btn btn-hot !whitespace-normal" href="${pay}" target="_blank" rel="noopener">${B.pay} ${ARROW}</a>
+            <a class="btn btn-line !whitespace-normal" href="${wa}" target="_blank" rel="noopener">${B.ask}</a>
+          </div>
+          <p class="mt-4 text-[0.9rem] opacity-65">${B.payNote}</p>`
+        : `<a class="btn btn-hot mt-7 !whitespace-normal" href="${wa}" target="_blank" rel="noopener">${B.cta} ${ARROW}</a>
+          <p class="mt-4 text-[0.9rem] opacity-65">${B.payment}</p>`}`
   }
 
   host.innerHTML = `

@@ -82,6 +82,19 @@ export const PLANS = [
 ]
 
 /*
+  Links de pagamento do Asaas, um por formato e opção ('código:sessões' ou 'código:período').
+  Cole aqui o link que o Marcus criar no painel do Asaas. Opção sem link (vazia) continua indo para o WhatsApp.
+  Small Group (B.1, B.2) e treino em dupla ficam fora de propósito: a turma e o valor do segundo aluno
+  são combinados pelo WhatsApp antes do pagamento.
+*/
+export const PAY_LINKS = {
+  'A.2:8': '', 'A.2:10': '', 'A.2:12': '',
+  'A.1:8': '', 'A.1:10': '', 'A.1:12': '',
+  'C.1:mensal': '', 'C.1:trimestral': '', 'C.1:anual': '',
+  'D.1:mensal': '', 'D.1:trimestral': '', 'D.1:anual': '',
+}
+
+/*
   "o quê": os cinco pilares do serviço. tone: cor do texto do topo sobre o painel ('light' = texto escuro).
   pos: ponto da foto que fica sempre à vista quando ela é recortada (object-position).
 */
